@@ -1,0 +1,407 @@
+
+
+<!DOCTYPE html>
+<html lang="zh">
+<!--begin head-->
+
+<head>
+    <meta charset="utf-8">
+<!--begin title-->
+
+<title>
+    
+    基于hyperledger fabric网络的第一个应用 |
+    
+    Blog of Scheme</title>
+<!--end title-->
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<!--begin mete-->
+
+<meta name="description" content="Blog of Scheme, misc things of computer"/>
+
+<meta name="author" content="Scheme J"/>
+
+<!--end mete-->
+<!--begin keywords-->
+<meta name="keywords" content="blockchain,cluster,composer,fabric,geth,hyperledge,hyperledger,proxmox,start,test"/>
+<!--end keywords-->
+<!--begin rss-->
+
+<link rel="alternate" href="/atom.xml" title="Blog of Scheme" type="application/atom+xml">
+
+<!--end rss-->
+<!--begin favicon-->
+
+<link rel="icon" href="/favicon.ico">
+
+<!--end favicon-->
+<!--begin style-->
+
+<!-- stylesheets list from config.yml -->
+
+<link rel="stylesheet" href="/css/hannah.css">
+
+
+<!--end style-->
+<meta name="generator" content="Hexo 4.2.1"></head>
+<!--end head-->
+<!--begin body-->
+
+<body class="container-fluid">
+
+    <!--begin menu-->
+    <div class="hannah-menu">
+    <i class="fh fh-ravelry fa-2x btn fixed-menu animated bounce" id="btn_menu" aria-hidden="true"></i>
+    <div class="menu-outer container-fluid hide animated" id="div_menu">
+        <div class="row" style="margin-bottom: 5px;">
+            
+            <div class="col-md-offset-2 col-md-3 col-xs-4 text-center left-social">
+                
+                <a target="_blank" href="https://github.com/marryton007" title="GitHub"><i class="fh fh-github"></i></a>
+                
+                <style>
+                    .left-social {
+                        height: 132px;
+                        line-height: 132px;
+                        font-size: 66px;
+                    }
+
+                    .left-social * {
+                        color: #f1ce8e;
+                    }
+
+                    @media (max-width: 767px) {
+                        .left-social {
+                            line-height: 132px;
+                            font-size: 33px;
+                        }
+                    }
+                </style>
+            </div>
+            <!--begin handImg-->
+            <div class="col-md-2 col-xs-4 text-center">
+                
+                <img src="/img/logo.png" alt="Head Image" class="img-circle">
+                
+            </div>
+            <!--end handImg-->
+            <div class="col-md-3 col-xs-4 text-center right-social">
+                
+                <style>
+                    .right-social {
+                        height: 132px;
+                        line-height: 132px;
+                        font-size: 66px;
+                    }
+
+                    @media (max-width: 767px) {
+                        .right-social {
+                            line-height: 132px;
+                            font-size: 33px;
+                        }
+                    }
+
+                    .right-social * {
+                        color: #f1ce8e;
+                    }
+                </style>
+            </div>
+        </div>
+        <div class="row">
+            <div class="menu-content col-md-8 col-md-push-2 col-xs-12 ">
+                <dl class="menu-content-item">
+                    <dt class="menu-content-title">
+                        <i class="fh fh-bars" aria-hidden="true"></i> Menu
+                    </dt>
+                    <dd class="menu-content-content">
+                        
+                        <div class="col-md-4 col-xs-6 col-sm-4 text-center animated tada">
+                            <a href="/" class="btn btn-block">
+                                
+                                <i class="fh fh-ravelry"></i>
+                                Home
+                            </a>
+                        </div>
+                        
+                        <div class="col-md-4 col-xs-6 col-sm-4 text-center animated tada">
+                            <a href="/categories" class="btn btn-block">
+                                
+                                <i class="fh fh-cubes"></i>
+                                Category
+                            </a>
+                        </div>
+                        
+                        <div class="col-md-4 col-xs-6 col-sm-4 text-center animated tada">
+                            <a href="/tags" class="btn btn-block">
+                                
+                                <i class="fh fh-tags"></i>
+                                Tag
+                            </a>
+                        </div>
+                        
+                        <div class="col-md-4 col-xs-6 col-sm-4 text-center animated tada">
+                            <a href="/archives" class="btn btn-block">
+                                
+                                <i class="fh fh-archive"></i>
+                                Archives
+                            </a>
+                        </div>
+                        
+                        <div class="col-md-4 col-xs-6 col-sm-4 text-center animated tada">
+                            <a href="/about" class="btn btn-block">
+                                
+                                <i class="fh fh-about"></i>
+                                About
+                            </a>
+                        </div>
+                        
+                        <div class="col-md-4 col-xs-6 col-sm-4 text-center animated tada">
+                            <a href="/doc" class="btn btn-block">
+                                
+                                <i class="fh fh-document"></i>
+                                Doc
+                            </a>
+                        </div>
+                        
+                        <div class="col-md-4 col-xs-6 col-sm-4 text-center animated tada">
+                            <a href="/plug" class="btn btn-block">
+                                
+                                <i class="fh fh-plug"></i>
+                                Plug
+                            </a>
+                        </div>
+                        
+                        <div class="col-md-4 col-xs-6 col-sm-4 text-center animated tada">
+                            <a href="/sitemap" class="btn btn-block">
+                                
+                                <i class="fh fh-sitemap"></i>
+                                SiteMap
+                            </a>
+                        </div>
+                        
+                        <div class="col-md-4 col-xs-6 col-sm-4 text-center animated tada">
+                            <a href="/atom.xml" class="btn btn-block">
+                                <i class="fh fh-rss" aria-hidden="true"></i> RSS
+                            </a>
+                        </div>
+                    </dd>
+                </dl>
+            </div>
+        </div>
+        <div class="row">
+            <div class="menu-content col-md-8 col-md-offset-2 col-xs-12 ">
+                <dl class="col-md-6 col-xs-6 menu-content-item">
+                    <dt class="menu-content-title">
+                        <i class="fh fh-cubes" aria-hidden="true"></i> Category
+                    </dt>
+                    <dd class="menu-content-content animated zoomIn">
+                        <ul class="menu-cate-list"><li class="menu-cate-list-item"><a class="menu-cate-list-link" href="/categories/blockchain/"><i class="fh fh-cube" aria-hidden="true"></i> blockchain</a><span class="menu-cate-list-count">7</span></li><li class="menu-cate-list-item"><a class="menu-cate-list-link" href="/categories/cluster/"><i class="fh fh-cube" aria-hidden="true"></i> cluster</a><span class="menu-cate-list-count">1</span></li><li class="menu-cate-list-item"><a class="menu-cate-list-link" href="/categories/code/"><i class="fh fh-cube" aria-hidden="true"></i> code</a><span class="menu-cate-list-count">1</span></li><li class="menu-cate-list-item"><a class="menu-cate-list-link" href="/categories/web%E5%89%8D%E7%AB%AF/"><i class="fh fh-cube" aria-hidden="true"></i> web前端</a><span class="menu-cate-list-count">1</span></li></ul>
+                    </dd>
+                </dl>
+                <dl class="col-md-6 col-xs-6 menu-content-item">
+                    <dt class="menu-content-title">
+                        <i class="fh fh-tag" aria-hidden="true"></i> Tags
+                    </dt>
+                    <dd class="menu-content-content animated zoomIn">
+                        <ul class="menu-tag-list" itemprop="keywords"><li class="menu-tag-list-item"><a class="menu-tag-list-link" href="/tags/blockchain/" rel="tag"><i class="fh fh-tag" aria-hidden="true"></i> blockchain</a><span class="menu-tag-list-count">9</span></li><li class="menu-tag-list-item"><a class="menu-tag-list-link" href="/tags/cluster/" rel="tag"><i class="fh fh-tag" aria-hidden="true"></i> cluster</a><span class="menu-tag-list-count">1</span></li><li class="menu-tag-list-item"><a class="menu-tag-list-link" href="/tags/composer/" rel="tag"><i class="fh fh-tag" aria-hidden="true"></i> composer</a><span class="menu-tag-list-count">3</span></li><li class="menu-tag-list-item"><a class="menu-tag-list-link" href="/tags/fabric/" rel="tag"><i class="fh fh-tag" aria-hidden="true"></i> fabric</a><span class="menu-tag-list-count">2</span></li><li class="menu-tag-list-item"><a class="menu-tag-list-link" href="/tags/geth/" rel="tag"><i class="fh fh-tag" aria-hidden="true"></i> geth</a><span class="menu-tag-list-count">1</span></li><li class="menu-tag-list-item"><a class="menu-tag-list-link" href="/tags/hyperledge/" rel="tag"><i class="fh fh-tag" aria-hidden="true"></i> hyperledge</a><span class="menu-tag-list-count">1</span></li><li class="menu-tag-list-item"><a class="menu-tag-list-link" href="/tags/hyperledger/" rel="tag"><i class="fh fh-tag" aria-hidden="true"></i> hyperledger</a><span class="menu-tag-list-count">5</span></li><li class="menu-tag-list-item"><a class="menu-tag-list-link" href="/tags/proxmox/" rel="tag"><i class="fh fh-tag" aria-hidden="true"></i> proxmox</a><span class="menu-tag-list-count">1</span></li><li class="menu-tag-list-item"><a class="menu-tag-list-link" href="/tags/start/" rel="tag"><i class="fh fh-tag" aria-hidden="true"></i> start</a><span class="menu-tag-list-count">1</span></li><li class="menu-tag-list-item"><a class="menu-tag-list-link" href="/tags/test/" rel="tag"><i class="fh fh-tag" aria-hidden="true"></i> test</a><span class="menu-tag-list-count">1</span></li></ul>
+                    </dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>
+    <!--end menu-->
+
+    <div class="row hannah-body">
+        <div class="col-md-8 col-md-push-2 col-xs-12">
+            <!--begin breadcrumb-->
+            <div class="bread-crumb">
+    <ul class="bread-crumb-menu animated rubberBand">
+        <li><a href="/"><i class="fh fh-ravelry" aria-hidden="true"></i> Home</a></li>
+        
+        <li><a href="/categories/blockchain/"><i class="fh fh-cube" aria-hidden="true"></i> blockchain</a>
+        </li>
+        
+        <li>
+            
+            <i class="fh fh-newspaper-o" aria-hidden="true"></i>
+            
+            基于hyperledger fabric网络的第一个应用
+        </li>
+        
+    </ul>
+    <div class="bread-crumb-search">
+        <div class="search">
+    <i class="fh fh-search icon-search"></i>
+    <input placeholder="Search ..." onkeyup="searchFunc(this,event,'/search.xml')"
+           class="input-search animated fadeInRight"/>
+    <div class="search-result animated fadeInRight">
+        <a class="animated tada col-lg-12 search-result-item result-link" href="/2020/06/08/test/">test</a><a class="animated tada col-lg-12 search-result-item result-link" href="/2018/12/08/fabric/peer-process/">Hyperledge fabric peer 流程分析</a><a class="animated tada col-lg-12 search-result-item result-link" href="/2018/11/08/proxmox/proxmox-setup/">proxmox 集群搭建</a><a class="animated tada col-lg-12 search-result-item result-link" href="/2018/04/22/blockchain/composer-k8s-fabric-deploy/">使用composer+k8s部署hyperledger fabric 1.1.0</a><a class="animated tada col-lg-12 search-result-item result-link" href="/2018/04/13/blockchain/geth-json-rpc/">以太坊节点geth json rpc使用指南</a><a class="animated tada col-lg-12 search-result-item result-link" href="/2017/09/28/blockchain/kafka-cluster/">搭建Kafka集群</a><a class="animated tada col-lg-12 search-result-item result-link" href="/2017/09/04/blockchain/hyperledger-composer-learn/">hyperledger composer 实战</a><a class="animated tada col-lg-12 search-result-item result-link" href="/2017/08/24/blockchain/fabric-transaction-flow/">hyperledger fabric交易流程</a><a class="animated tada col-lg-12 search-result-item result-link" href="/2017/08/23/blockchain/first-fabric-application/">基于hyperledger fabric网络的第一个应用</a><a class="animated tada col-lg-12 search-result-item result-link" href="/2017/08/22/blockchain/build-first-fabric-network/">使用hyperledger fabric构建你的第一个区块链网络</a><a class="animated tada col-lg-12 search-result-item result-link" href="/2017/08/18/blockchain/blockchain-describe/">白话区块链</a>
+    </div>
+</div>
+    </div>
+</div>
+            <!--end breadcrumb-->
+            <!--begin body-->
+            <article class="post animated rollIn">
+    <h1 class="post-title">基于hyperledger fabric网络的第一个应用</h1>
+    <div class="post-subtitle">
+        
+        <time datetime="2017-08-23T06:17:39.000Z" class="item">
+            <i class="fh fh-calendar" aria-hidden="true"></i>&nbsp;&nbsp;2017-08-23
+        </time>
+        
+        
+        <span class="item">
+      <i class="fh fh-cubes" aria-hidden="true"></i>&nbsp;
+            
+            <a class="label label-primary tags" href="/categories/blockchain/">
+           <i class="fh fh-cube" aria-hidden="true"></i>&nbsp;blockchain
+        </a>
+            
+        </span>
+        
+        
+        <span class="item">
+        <i class="fh fh-tags" aria-hidden="true"></i>&nbsp;
+            
+            <a class="label label-info tags" href="/tags/blockchain/">
+            <i class="fh fh-tag" aria-hidden="true"></i>&nbsp;blockchain
+            </a>
+            
+            <a class="label label-info tags" href="/tags/hyperledger/">
+            <i class="fh fh-tag" aria-hidden="true"></i>&nbsp;hyperledger
+            </a>
+            
+            <a class="label label-info tags" href="/tags/fabric/">
+            <i class="fh fh-tag" aria-hidden="true"></i>&nbsp;fabric
+            </a>
+            
+        </span>
+        
+    </div>
+    
+    <ol>
+<li><h3 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h3><p>本文基本 hyperledger fabric 区块链网络，编写一个简单的应用，旨在讲述以下几点：</p>
+<ul>
+<li>如何启动一个 hyperledger fabric 区块链网络</li>
+<li>如何编写一个简单的智能合约</li>
+<li>如何将区块链应用与现有系统整合</li>
+</ul>
+</li>
+<li><h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/hyperledger/fabric-samples.git</span><br><span class="line"><span class="built_in">cd</span> fabric-samples/fabcar</span><br></pre></td></tr></table></figure>
+</li>
+<li><h3 id="启动区块链网络"><a href="#启动区块链网络" class="headerlink" title="启动区块链网络"></a>启动区块链网络</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./startFabric.sh</span><br></pre></td></tr></table></figure>
+
+<p>来看一下上面的 startFabric.sh 这个脚本</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Copyright IBM Corp All Rights Reserved</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># SPDX-License-Identifier: Apache-2.0</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Exit on first error</span></span><br><span class="line"><span class="built_in">set</span> -e</span><br><span class="line"></span><br><span class="line"><span class="comment"># don't rewrite paths for Windows Git Bash users</span></span><br><span class="line"><span class="built_in">export</span> MSYS_NO_PATHCONV=1</span><br><span class="line"></span><br><span class="line">starttime=$(date +%s)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ ! -d ~/.hfc-key-store/ ]; <span class="keyword">then</span></span><br><span class="line">	mkdir ~/.hfc-key-store/</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line">cp <span class="variable">$PWD</span>/creds/* ~/.hfc-key-store/</span><br><span class="line"><span class="comment"># launch network; create channel and join peer to channel</span></span><br><span class="line"><span class="comment"># 进入同级目录basic-network</span></span><br><span class="line"><span class="built_in">cd</span> ../basic-network</span><br><span class="line"><span class="comment"># 运行start.sh脚本</span></span><br><span class="line">./start.sh</span><br><span class="line"></span><br><span class="line"><span class="comment"># Now launch the CLI container in order to install, instantiate chaincode</span></span><br><span class="line"><span class="comment"># and prime the ledger with our 10 cars</span></span><br><span class="line"><span class="comment"># 使用docker-compose 启动cli容器</span></span><br><span class="line">docker-compose -f ./docker-compose.yml up -d cli</span><br><span class="line"></span><br><span class="line"><span class="comment"># 在cli容器中执行peer chaincode install来安装合约</span></span><br><span class="line">docker <span class="built_in">exec</span> -e <span class="string">"CORE_PEER_LOCALMSPID=Org1MSP"</span> -e <span class="string">"CORE_PEER_MSPCONFIGPATH=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp"</span> cli peer chaincode install -n fabcar -v 1.0 -p github.com/fabcar</span><br><span class="line"></span><br><span class="line"><span class="comment"># 在cli容器中执行peer chaincode instantiate来初始化合约，这个操作将会调用合约里的Init函数</span></span><br><span class="line"><span class="comment"># -C 指定通道名称</span></span><br><span class="line"><span class="comment"># -c 指定初始化参数</span></span><br><span class="line"><span class="comment"># -P 指定背书策略，这里只要是Org1MSP或Org2MSP任一成员即可</span></span><br><span class="line">docker <span class="built_in">exec</span> -e <span class="string">"CORE_PEER_LOCALMSPID=Org1MSP"</span> -e <span class="string">"CORE_PEER_MSPCONFIGPATH=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp"</span> cli peer chaincode instantiate -o orderer.example.com:7050 -C mychannel -n fabcar -v 1.0 -c <span class="string">'&#123;"Args":[""]&#125;'</span> -P <span class="string">"OR ('Org1MSP.member','Org2MSP.member')"</span></span><br><span class="line">sleep 10</span><br><span class="line"></span><br><span class="line"><span class="comment"># 在cli容器里执行peer chaincode invoke操作来调用合约中的initLedger函数</span></span><br><span class="line">docker <span class="built_in">exec</span> -e <span class="string">"CORE_PEER_LOCALMSPID=Org1MSP"</span> -e <span class="string">"CORE_PEER_MSPCONFIGPATH=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp"</span> cli peer chaincode invoke -o orderer.example.com:7050 -C mychannel -n fabcar -c <span class="string">'&#123;"function":"initLedger","Args":[""]&#125;'</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">printf</span> <span class="string">"\nTotal execution time : <span class="variable">$(($(date +%s)</span> - starttime)) secs ...\n\n"</span></span><br></pre></td></tr></table></figure>
+
+<p>看一下<em>startFabric.sh*脚本中用到的</em>../basic-network/start.sh*脚本</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Copyright IBM Corp All Rights Reserved</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># SPDX-License-Identifier: Apache-2.0</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Exit on first error, print all commands.</span></span><br><span class="line"><span class="built_in">set</span> -ev</span><br><span class="line"></span><br><span class="line"><span class="comment"># don't rewrite paths for Windows Git Bash users</span></span><br><span class="line"><span class="built_in">export</span> MSYS_NO_PATHCONV=1</span><br><span class="line"></span><br><span class="line"><span class="comment"># 根据docker-compose.yml文件停止相关的容器</span></span><br><span class="line">docker-compose -f docker-compose.yml down</span><br><span class="line"></span><br><span class="line"><span class="comment"># 根据docker-compose.yml文件启动如下容器：</span></span><br><span class="line"><span class="comment"># ca.example.com容器提供CA认证服务</span></span><br><span class="line"><span class="comment"># orderer.example.com提供排序(共识)服务</span></span><br><span class="line"><span class="comment"># peer0.org1.example.com提供背书和账本服务，</span></span><br><span class="line"><span class="comment"># couchdb作为Key-Value服务来存储区块链状态(world state)</span></span><br><span class="line">docker-compose -f docker-compose.yml up -d ca.example.com orderer.example.com peer0.org1.example.com couchdb</span><br><span class="line"></span><br><span class="line"><span class="comment"># wait for Hyperledger Fabric to start</span></span><br><span class="line"><span class="comment"># incase of errors when running later commands, issue export FABRIC_START_TIMEOUT=&lt;larger number&gt;</span></span><br><span class="line"><span class="built_in">export</span> FABRIC_START_TIMEOUT=10</span><br><span class="line"><span class="comment">#echo $&#123;FABRIC_START_TIMEOUT&#125;</span></span><br><span class="line">sleep <span class="variable">$&#123;FABRIC_START_TIMEOUT&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Create the channel</span></span><br><span class="line"><span class="comment"># 创建通道</span></span><br><span class="line">docker <span class="built_in">exec</span> -e <span class="string">"CORE_PEER_LOCALMSPID=Org1MSP"</span> -e <span class="string">"CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/msp/users/Admin@org1.example.com/msp"</span> peer0.org1.example.com peer channel create -o orderer.example.com:7050 -c mychannel -f /etc/hyperledger/configtx/channel.tx</span><br><span class="line"></span><br><span class="line"><span class="comment"># Join peer0.org1.example.com to the channel.</span></span><br><span class="line"><span class="comment"># 将peer1.org1.example.com加入通道</span></span><br><span class="line">docker <span class="built_in">exec</span> -e <span class="string">"CORE_PEER_LOCALMSPID=Org1MSP"</span> -e <span class="string">"CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/msp/users/Admin@org1.example.com/msp"</span> peer0.org1.example.com peer channel join -b mychannel.block</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>4) ### 智能合约关键内容解释</p>
+<p>   合约代码在<em>../chaincode/fabcar/fabcar.go</em>文件中定义，</p>
+   <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="comment">/* Imports</span></span><br><span class="line"><span class="comment"> * 4 utility libraries for formatting, handling bytes, reading and writing JSON, and string manipulation</span></span><br><span class="line"><span class="comment"> * 2 specific Hyperledger Fabric specific libraries for Smart Contracts</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">"bytes"</span></span><br><span class="line">	<span class="string">"encoding/json"</span></span><br><span class="line">	<span class="string">"fmt"</span></span><br><span class="line">	<span class="string">"strconv"</span></span><br><span class="line"></span><br><span class="line">	<span class="string">"github.com/hyperledger/fabric/core/chaincode/shim"</span></span><br><span class="line">	sc <span class="string">"github.com/hyperledger/fabric/protos/peer"</span></span><br><span class="line">)</span><br><span class="line"><span class="comment">// Define the Smart Contract structure</span></span><br><span class="line"><span class="keyword">type</span> SmartContract <span class="keyword">struct</span> &#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Define the car structure, with 4 properties.  Structure tags are used by encoding/json library</span></span><br><span class="line"><span class="keyword">type</span> Car <span class="keyword">struct</span> &#123;</span><br><span class="line">	Make   <span class="keyword">string</span> <span class="string">`json:"make"`</span></span><br><span class="line">	Model  <span class="keyword">string</span> <span class="string">`json:"model"`</span></span><br><span class="line">	Colour <span class="keyword">string</span> <span class="string">`json:"colour"`</span></span><br><span class="line">	Owner  <span class="keyword">string</span> <span class="string">`json:"owner"`</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * The Init method is called when the Smart Contract "fabcar" is instantiated by the blockchain network</span></span><br><span class="line"><span class="comment"> * Best practice is to have any Ledger initialization in separate function -- see initLedger()</span></span><br><span class="line"><span class="comment"> * 合约初始化函数</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(s *SmartContract)</span> <span class="title">Init</span><span class="params">(APIstub shim.ChaincodeStubInterface)</span> <span class="title">sc</span>.<span class="title">Response</span></span> &#123;</span><br><span class="line">	<span class="keyword">return</span> shim.Success(<span class="literal">nil</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * The Invoke method is called as a result of an application request to run the Smart Contract "fabcar"</span></span><br><span class="line"><span class="comment"> * The calling application program has also specified the particular smart contract function to be called, with arguments</span></span><br><span class="line"><span class="comment"> * 查询和更新账本的入口</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(s *SmartContract)</span> <span class="title">Invoke</span><span class="params">(APIstub shim.ChaincodeStubInterface)</span> <span class="title">sc</span>.<span class="title">Response</span></span> &#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Retrieve the requested Smart Contract function and arguments</span></span><br><span class="line">	function, args := APIstub.GetFunctionAndParameters()</span><br><span class="line">	<span class="comment">// Route to the appropriate handler function to interact with the ledger appropriately</span></span><br><span class="line">	<span class="comment">// 根据传入的函数名称调用对应的代码</span></span><br><span class="line">	<span class="keyword">if</span> function == <span class="string">"queryCar"</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> s.queryCar(APIstub, args)</span><br><span class="line">	&#125; <span class="keyword">else</span> <span class="keyword">if</span> function == <span class="string">"initLedger"</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> s.initLedger(APIstub)</span><br><span class="line">	&#125; <span class="keyword">else</span> <span class="keyword">if</span> function == <span class="string">"createCar"</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> s.createCar(APIstub, args)</span><br><span class="line">	&#125; <span class="keyword">else</span> <span class="keyword">if</span> function == <span class="string">"queryAllCars"</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> s.queryAllCars(APIstub)</span><br><span class="line">	&#125; <span class="keyword">else</span> <span class="keyword">if</span> function == <span class="string">"changeCarOwner"</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> s.changeCarOwner(APIstub, args)</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> shim.Error(<span class="string">"Invalid Smart Contract function name."</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * 根据轿车ID查询某一辆轿车的信息，轿车ID存放在传入args[0]中</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(s *SmartContract)</span> <span class="title">queryCar</span><span class="params">(APIstub shim.ChaincodeStubInterface, args []<span class="keyword">string</span>)</span> <span class="title">sc</span>.<span class="title">Response</span></span> &#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> <span class="built_in">len</span>(args) != <span class="number">1</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> shim.Error(<span class="string">"Incorrect number of arguments. Expecting 1"</span>)</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	carAsBytes, _ := APIstub.GetState(args[<span class="number">0</span>])</span><br><span class="line">	<span class="keyword">return</span> shim.Success(carAsBytes)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * 初始化账本，存入10台轿车数据</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(s *SmartContract)</span> <span class="title">initLedger</span><span class="params">(APIstub shim.ChaincodeStubInterface)</span> <span class="title">sc</span>.<span class="title">Response</span></span> &#123;</span><br><span class="line">	cars := []Car&#123;</span><br><span class="line">		Car&#123;Make: <span class="string">"Toyota"</span>, Model: <span class="string">"Prius"</span>, Colour: <span class="string">"blue"</span>, Owner: <span class="string">"Tomoko"</span>&#125;,</span><br><span class="line">		Car&#123;Make: <span class="string">"Ford"</span>, Model: <span class="string">"Mustang"</span>, Colour: <span class="string">"red"</span>, Owner: <span class="string">"Brad"</span>&#125;,</span><br><span class="line">		Car&#123;Make: <span class="string">"Hyundai"</span>, Model: <span class="string">"Tucson"</span>, Colour: <span class="string">"green"</span>, Owner: <span class="string">"Jin Soo"</span>&#125;,</span><br><span class="line">		Car&#123;Make: <span class="string">"Volkswagen"</span>, Model: <span class="string">"Passat"</span>, Colour: <span class="string">"yellow"</span>, Owner: <span class="string">"Max"</span>&#125;,</span><br><span class="line">		Car&#123;Make: <span class="string">"Tesla"</span>, Model: <span class="string">"S"</span>, Colour: <span class="string">"black"</span>, Owner: <span class="string">"Adriana"</span>&#125;,</span><br><span class="line">		Car&#123;Make: <span class="string">"Peugeot"</span>, Model: <span class="string">"205"</span>, Colour: <span class="string">"purple"</span>, Owner: <span class="string">"Michel"</span>&#125;,</span><br><span class="line">		Car&#123;Make: <span class="string">"Chery"</span>, Model: <span class="string">"S22L"</span>, Colour: <span class="string">"white"</span>, Owner: <span class="string">"Aarav"</span>&#125;,</span><br><span class="line">		Car&#123;Make: <span class="string">"Fiat"</span>, Model: <span class="string">"Punto"</span>, Colour: <span class="string">"violet"</span>, Owner: <span class="string">"Pari"</span>&#125;,</span><br><span class="line">		Car&#123;Make: <span class="string">"Tata"</span>, Model: <span class="string">"Nano"</span>, Colour: <span class="string">"indigo"</span>, Owner: <span class="string">"Valeria"</span>&#125;,</span><br><span class="line">		Car&#123;Make: <span class="string">"Holden"</span>, Model: <span class="string">"Barina"</span>, Colour: <span class="string">"brown"</span>, Owner: <span class="string">"Shotaro"</span>&#125;,</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	i := <span class="number">0</span></span><br><span class="line">	<span class="keyword">for</span> i &lt; <span class="built_in">len</span>(cars) &#123;</span><br><span class="line">		fmt.Println(<span class="string">"i is "</span>, i)</span><br><span class="line">		carAsBytes, _ := json.Marshal(cars[i])</span><br><span class="line">		APIstub.PutState(<span class="string">"CAR"</span>+strconv.Itoa(i), carAsBytes)</span><br><span class="line">		fmt.Println(<span class="string">"Added"</span>, cars[i])</span><br><span class="line">		i = i + <span class="number">1</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> shim.Success(<span class="literal">nil</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * 在账本中添加一辆新轿车，轿车信息由args参数传入</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(s *SmartContract)</span> <span class="title">createCar</span><span class="params">(APIstub shim.ChaincodeStubInterface, args []<span class="keyword">string</span>)</span> <span class="title">sc</span>.<span class="title">Response</span></span> &#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> <span class="built_in">len</span>(args) != <span class="number">5</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> shim.Error(<span class="string">"Incorrect number of arguments. Expecting 5"</span>)</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">var</span> car = Car&#123;Make: args[<span class="number">1</span>], Model: args[<span class="number">2</span>], Colour: args[<span class="number">3</span>], Owner: args[<span class="number">4</span>]&#125;</span><br><span class="line"></span><br><span class="line">	carAsBytes, _ := json.Marshal(car)</span><br><span class="line">	APIstub.PutState(args[<span class="number">0</span>], carAsBytes)</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> shim.Success(<span class="literal">nil</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * 查询所有轿车信息</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(s *SmartContract)</span> <span class="title">queryAllCars</span><span class="params">(APIstub shim.ChaincodeStubInterface)</span> <span class="title">sc</span>.<span class="title">Response</span></span> &#123;</span><br><span class="line"></span><br><span class="line">	startKey := <span class="string">"CAR0"</span></span><br><span class="line">	endKey := <span class="string">"CAR999"</span></span><br><span class="line"></span><br><span class="line">	resultsIterator, err := APIstub.GetStateByRange(startKey, endKey)</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> shim.Error(err.Error())</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">defer</span> resultsIterator.Close()</span><br><span class="line"></span><br><span class="line">	<span class="comment">// buffer is a JSON array containing QueryResults</span></span><br><span class="line">	<span class="keyword">var</span> buffer bytes.Buffer</span><br><span class="line">	buffer.WriteString(<span class="string">"["</span>)</span><br><span class="line"></span><br><span class="line">	bArrayMemberAlreadyWritten := <span class="literal">false</span></span><br><span class="line">	<span class="keyword">for</span> resultsIterator.HasNext() &#123;</span><br><span class="line">		queryResponse, err := resultsIterator.Next()</span><br><span class="line">		<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">			<span class="keyword">return</span> shim.Error(err.Error())</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">// Add a comma before array members, suppress it for the first array member</span></span><br><span class="line">		<span class="keyword">if</span> bArrayMemberAlreadyWritten == <span class="literal">true</span> &#123;</span><br><span class="line">			buffer.WriteString(<span class="string">","</span>)</span><br><span class="line">		&#125;</span><br><span class="line">		buffer.WriteString(<span class="string">"&#123;\"Key\":"</span>)</span><br><span class="line">		buffer.WriteString(<span class="string">"\""</span>)</span><br><span class="line">		buffer.WriteString(queryResponse.Key)</span><br><span class="line">		buffer.WriteString(<span class="string">"\""</span>)</span><br><span class="line"></span><br><span class="line">		buffer.WriteString(<span class="string">", \"Record\":"</span>)</span><br><span class="line">		<span class="comment">// Record is a JSON object, so we write as-is</span></span><br><span class="line">		buffer.WriteString(<span class="keyword">string</span>(queryResponse.Value))</span><br><span class="line">		buffer.WriteString(<span class="string">"&#125;"</span>)</span><br><span class="line">		bArrayMemberAlreadyWritten = <span class="literal">true</span></span><br><span class="line">	&#125;</span><br><span class="line">	buffer.WriteString(<span class="string">"]"</span>)</span><br><span class="line"></span><br><span class="line">	fmt.Printf(<span class="string">"- queryAllCars:\n%s\n"</span>, buffer.String())</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> shim.Success(buffer.Bytes())</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * 修改某一轿车的车主，轿车ID和车主信息args参数传入</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(s *SmartContract)</span> <span class="title">changeCarOwner</span><span class="params">(APIstub shim.ChaincodeStubInterface, args []<span class="keyword">string</span>)</span> <span class="title">sc</span>.<span class="title">Response</span></span> &#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> <span class="built_in">len</span>(args) != <span class="number">2</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> shim.Error(<span class="string">"Incorrect number of arguments. Expecting 2"</span>)</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	carAsBytes, _ := APIstub.GetState(args[<span class="number">0</span>])</span><br><span class="line">	car := Car&#123;&#125;</span><br><span class="line"></span><br><span class="line">	json.Unmarshal(carAsBytes, &amp;car)</span><br><span class="line">	car.Owner = args[<span class="number">1</span>]</span><br><span class="line"></span><br><span class="line">	carAsBytes, _ = json.Marshal(car)</span><br><span class="line">	APIstub.PutState(args[<span class="number">0</span>], carAsBytes)</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> shim.Success(<span class="literal">nil</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// The main function is only relevant in unit test mode. Only included here for completeness.</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Create a new Smart Contract</span></span><br><span class="line">	err := shim.Start(<span class="built_in">new</span>(SmartContract))</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		fmt.Printf(<span class="string">"Error creating new Smart Contract: %s"</span>, err)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>   fabric 使用 go 语言来编写智能合约，使用 docker 容器来运行合约代码。每份合约只需要实现如下接口</p>
+   <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> Chaincode <span class="keyword">interface</span> &#123;</span><br><span class="line">	<span class="comment">// 合约初始时被调用，即在执行peer chaincode instantiate命令时调用且仅调用一次</span></span><br><span class="line">	Init(stub ChaincodeStubInterface) pb.Response</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Invoke 用来查询或更新账本状态</span></span><br><span class="line">	Invoke(stub ChaincodeStubInterface) pb.Response</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>   可以将 fabric 的账本(world state)理解为一个 Key-Value 数据库或是 map(对象，字典等)，这也是为什么可以使用<a href="http://couchdb.apache.org/" target="_blank" rel="noopener">couchdb</a>的原因，合约的主要功能就是与这个数据库打交道，如：</p>
+<ul>
+<li>APIstub.GetState(key) 读取 Key 对应的 Value</li>
+<li>APIstub.PutState(key, value)，将 key-value 值对写入数据库中</li>
+</ul>
+<p>5) ### 调用合约功能</p>
+<p>   区块链网络已经启动，合约也已经部署好，现在来看看如何访问合约中的功能，先看看 query.js，其他的 js 文件如 invoke.js 程序结构相似。</p>
+   <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">"use strict"</span>;</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Copyright IBM Corp All Rights Reserved</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * SPDX-License-Identifier: Apache-2.0</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Hyperledger Fabric Sample Query Program</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// nodejs的fabric客户端</span></span><br><span class="line"><span class="keyword">var</span> hfc = <span class="built_in">require</span>(<span class="string">"fabric-client"</span>);</span><br><span class="line"><span class="keyword">var</span> path = <span class="built_in">require</span>(<span class="string">"path"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 相关配置参数</span></span><br><span class="line"><span class="keyword">var</span> options = &#123;</span><br><span class="line">  wallet_path: path.join(__dirname, <span class="string">"./creds"</span>),</span><br><span class="line">  user_id: <span class="string">"PeerAdmin"</span>,</span><br><span class="line">  channel_id: <span class="string">"mychannel"</span>,</span><br><span class="line">  chaincode_id: <span class="string">"fabcar"</span>,</span><br><span class="line">  network_url: <span class="string">"grpc://localhost:7051"</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> channel = &#123;&#125;;</span><br><span class="line"><span class="keyword">var</span> client = <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line"><span class="built_in">Promise</span>.resolve()</span><br><span class="line">  .then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"Create a client and set the wallet location"</span>);</span><br><span class="line">    <span class="comment">// 初始化新的fabric客户端</span></span><br><span class="line">    client = <span class="keyword">new</span> hfc();</span><br><span class="line">    <span class="comment">// 设置客户端证书缓存位置，连接时首先要经过CA认证，客户端会缓存用户的认证信息</span></span><br><span class="line">    <span class="keyword">return</span> hfc.newDefaultKeyValueStore(&#123; <span class="attr">path</span>: options.wallet_path &#125;);</span><br><span class="line">  &#125;)</span><br><span class="line">  .then(<span class="function">(<span class="params">wallet</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(</span><br><span class="line">      <span class="string">"Set wallet path, and associate user "</span>,</span><br><span class="line">      options.user_id,</span><br><span class="line">      <span class="string">" with application"</span></span><br><span class="line">    );</span><br><span class="line">    client.setStateStore(wallet);</span><br><span class="line">    <span class="comment">// 获取用户对应的信息</span></span><br><span class="line">    <span class="keyword">return</span> client.getUserContext(options.user_id, <span class="literal">true</span>);</span><br><span class="line">  &#125;)</span><br><span class="line">  .then(<span class="function">(<span class="params">user</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(</span><br><span class="line">      <span class="string">"Check user is enrolled, and set a query URL in the network"</span></span><br><span class="line">    );</span><br><span class="line">    <span class="keyword">if</span> (user === <span class="literal">undefined</span> || user.isEnrolled() === <span class="literal">false</span>) &#123;</span><br><span class="line">      <span class="comment">// 用户认证失败</span></span><br><span class="line">      <span class="built_in">console</span>.error(<span class="string">"User not defined, or not enrolled - error"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 新建通道</span></span><br><span class="line">    channel = client.newChannel(options.channel_id);</span><br><span class="line">    <span class="comment">// 将节点加入通道中</span></span><br><span class="line">    channel.addPeer(client.newPeer(options.network_url));</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;)</span><br><span class="line">  .then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"Make query"</span>);</span><br><span class="line">    <span class="comment">// 构造交易ID</span></span><br><span class="line">    <span class="keyword">var</span> transaction_id = client.newTransactionID();</span><br><span class="line">    <span class="built_in">console</span>.log(</span><br><span class="line">      <span class="string">"Assigning transaction_id: "</span>,</span><br><span class="line">      transaction_id._transaction_id</span><br><span class="line">    );</span><br><span class="line"></span><br><span class="line">    <span class="comment">// queryCar - requires 1 argument, ex: args: ['CAR4'],</span></span><br><span class="line">    <span class="comment">// queryAllCars - requires no arguments , ex: args: [''],</span></span><br><span class="line">    <span class="comment">// 构造区块链请求结构体</span></span><br><span class="line">    <span class="keyword">const</span> request = &#123;</span><br><span class="line">      <span class="comment">// 合约ID</span></span><br><span class="line">      chaincodeId: options.chaincode_id,</span><br><span class="line">      <span class="comment">// 交易ID</span></span><br><span class="line">      txId: transaction_id,</span><br><span class="line">      <span class="comment">// 要调用的合约函数名</span></span><br><span class="line">      fcn: <span class="string">"queryAllCars"</span>,</span><br><span class="line">      <span class="comment">// 传递给合约函数的参数</span></span><br><span class="line">      args: [<span class="string">""</span>],</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="comment">// 发起合约调用</span></span><br><span class="line">    <span class="keyword">return</span> channel.queryByChaincode(request);</span><br><span class="line">  &#125;)</span><br><span class="line">  .then(<span class="function">(<span class="params">query_responses</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 合约调用结果返回</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"returned from query"</span>);</span><br><span class="line">    <span class="keyword">if</span> (!query_responses.length) &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">"No payloads were returned from query"</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">"Query result count = "</span>, query_responses.length);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (query_responses[<span class="number">0</span>] <span class="keyword">instanceof</span> <span class="built_in">Error</span>) &#123;</span><br><span class="line">      <span class="built_in">console</span>.error(<span class="string">"error from query = "</span>, query_responses[<span class="number">0</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"Response is "</span>, query_responses[<span class="number">0</span>].toString());</span><br><span class="line">  &#125;)</span><br><span class="line">  .catch(<span class="function">(<span class="params">err</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.error(<span class="string">"Caught Error"</span>, err);</span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure>
+
+<p>6) ### 总结</p>
+<p>   看到这里，是不是已经懵了:(</p>
+<p>   想用区块链写个合约是不是好麻烦啊，要用到 docker，还要会 go，再来点 Nodejs，好难啊。。。想必 hyperledger 社区也意识到了这个问题，所以他们推出了<a href="https://hyperledger.github.io/composer/" target="_blank" rel="noopener">Hyperledger Composer</a>项目，不用专门学 go——其实学 go 也没坏处:)，composer 主页上介绍说可以将开发时间变成以周为单位，而不是月为单位。后续会推出<a href="https://hyperledger.github.io/composer/" target="_blank" rel="noopener">Hyperledger Composer</a>相关文章，敬请关注。</p>
+<ol start="7">
+<li><h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><a href="http://hyperledger-fabric.readthedocs.io/en/latest/write_first_app.html" target="_blank" rel="noopener">hyperledger fabric write first application</a><br><a href="https://github.com/hyperledger/fabric-sdk-node" target="_blank" rel="noopener">fabric-client 代码库</a><br><a href="https://fabric-sdk-node.github.io/" target="_blank" rel="noopener">fabric-client-api 文档</a></li>
+</ol>
+
+</article>
+<ol class="animated rollIn hannah-toc"><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-3"><a class="animated rollIn hannah-toc-link" href="#摘要"><span class="animated rollIn hannah-toc-text">摘要</span></a></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-3"><a class="animated rollIn hannah-toc-link" href="#准备工作"><span class="animated rollIn hannah-toc-text">准备工作</span></a></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-3"><a class="animated rollIn hannah-toc-link" href="#启动区块链网络"><span class="animated rollIn hannah-toc-text">启动区块链网络</span></a></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-3"><a class="animated rollIn hannah-toc-link" href="#参考资料"><span class="animated rollIn hannah-toc-text">参考资料</span></a></li></ol>
+<div class="animated bounceInDown paginations">
+    <div class="col-md-8 col-md-push-2 col-xs-12">
+        <nav>
+            
+            <a href="/2017/08/24/blockchain/fabric-transaction-flow/" class="prev col-md-2 col-xs-4 text-left">&larr; Prev</a>
+            
+            <span
+                class="page-content col-md-8  col-xs-4 text-center">
+                
+            </span>
+            
+            <a href="/2017/08/22/blockchain/build-first-fabric-network/" class="next col-md-2 col-xs-4 text-right">Next &rarr;</a>
+            
+        </nav>
+        <div>
+            <div class="col-md-6 col-xs-6 text-left">
+                
+                hyperledger fabric交易流程
+                
+            </div>
+            <div class="col-md-6 col-xs-6 text-right">
+                
+                使用hyperledger fabric构建你的第一个区块链网络
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+            <!--end body-->
+            <!--begin comments-->
+            
+<div class="comments">
+    
+
+    
+    
+</div>
+
+
+            <!--end comments-->
+        </div>
+    </div>
+
+    <!--begin footer-->
+    <footer id="footer" class="footer animated fadeInUp hide">
+    <p><i class="copy">&copy;</i> 2020 <a href="http://marryton007.github.io">Scheme J</a> All Right Reserved.</p>
+    <p>Powered by <a href="http://hexo.io" target="_blank" rel="external nofollow noopener">Hexo</a>. Theme by <a href="https://github.com/objectyan/hexo-theme-hannah" target="_blank" rel="external nofollow noopener">hannah</a></p>
+</footer>
+    <!--end footer-->
+
+    
+    <!-- scripts list from theme config.yml -->
+    
+    <script src="/js/hannah.js"></script>
+    
+    
+    <!--begin analytics-->
+    
+
+    <!--end analytics-->
+</body>
+<!--end body-->
+<!--begin canvas-nest-->
+<script>
+    var nesturl = "https://unpkg.com/canvas-nest.js/dist/canvas-nest.js";
+    var c = document.getElementsByTagName("body")[0] || document.body || document.documentElement;
+    var b = document.createElement("script");
+    b.setAttribute("type", "text/javascript");
+    b.setAttribute("src", nesturl);
+    b.setAttribute("color",
+        `${ Math.floor(Math.random()*256)},${ Math.floor(Math.random()*256)},${ Math.floor(Math.random()*256)}`);
+    b.setAttribute("opacity", Math.random());
+    b.setAttribute("count", parseInt((Math.random() * 500) || 99));
+    c.appendChild(b)
+</script>
+<!--end canvas-nest-->
+
+</html>
