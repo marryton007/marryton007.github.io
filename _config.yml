@@ -100,5 +100,5 @@ theme: hannah
 deploy:
   type: git
   repo: https://github.com/marryton007/marryton007.github.io
-  branch: gh-pages
+  branch: master
   message: "Site updated: {{ now('YYYY-MM-DD HH:mm:ss') }}"
