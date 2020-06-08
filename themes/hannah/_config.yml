@@ -1,0 +1,92 @@
+# html lang
+language: en
+
+# main menu navigation
+menu:
+  Home:
+    url: /
+    icon: fh fh-ravelry
+  Category:
+    url: /categories
+    icon: fh fh-cubes
+  Tag:
+    url: /tags
+    icon: fh fh-tags
+  Archives:
+    url: /archives
+    icon: fh fh-archive
+  About:
+    url: /about
+    icon: fh fh-about
+  Doc:
+    url: /doc
+    icon: fh fh-document
+  Plug:
+    url: /plug
+    icon: fh fh-plug
+  SiteMap:
+    url: /sitemap
+    icon: fh fh-sitemap
+
+# RSS
+rss: /atom.xml
+
+# Social
+social:
+  github:
+    url: https://github.com/marryton007
+    icon: fh fh-github
+    title: GitHub
+
+# headImg url and gravatar
+headImg:
+  url: /img/logo.png
+  gravatar:
+    email:
+    option:
+
+# Miscelaneous
+favicon: /favicon.ico
+
+# stylesheets loaded in the <head>
+stylesheets:
+  - /css/hannah.css
+
+# scripts loaded in the end of the body
+scripts:
+  - /js/hannah.js
+
+# post search
+search:
+  path: search.xml
+  field: post
+
+# site map
+sitemap:
+  path: sitemap.xml
+  template: ./sitemap_template.xml
+
+# Baidu Analytics
+baidu_analytics:
+# Google Analytics
+google_analytics:
+
+# Disqus Comments
+disqus_shortname:
+# Changyan Comments
+changyan_comments:
+  appid:
+  appsecret:
+# Gittalk Comments
+gittalk_comments:
+  clientID:
+  clientSecret:
+  repo: blog
+  owner: marryton007
+  admin: marryton007
+
+# auto nofollow
+nofollow:
+  enable: true
+  exclude:
+    - objectyan.me
