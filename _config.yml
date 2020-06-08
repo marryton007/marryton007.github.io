@@ -98,4 +98,7 @@ theme: hannah
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-  type: ""
+  type: git
+  repo: https://github.com/marryton007/marryton007.github.io
+  branch: gh-pages
+  message: "Site updated: {{ now('YYYY-MM-DD HH:mm:ss') }}"
