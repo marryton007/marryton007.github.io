@@ -1,0 +1,400 @@
+
+
+<!DOCTYPE html>
+<html lang="zh">
+<!--begin head-->
+
+<head>
+    <meta charset="utf-8">
+<!--begin title-->
+
+<title>
+    
+    使用composer+k8s部署hyperledger fabric 1.1.0 |
+    
+    Blog of Scheme</title>
+<!--end title-->
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<!--begin mete-->
+
+<meta name="description" content="Blog of Scheme, misc things of computer"/>
+
+<meta name="author" content="Scheme J"/>
+
+<!--end mete-->
+<!--begin keywords-->
+<meta name="keywords" content="Android,adeb,blockchain,cluster,composer,fabric,geth,hyperledge,hyperledger,linux,proxmox,start,test"/>
+<!--end keywords-->
+<!--begin rss-->
+
+<link rel="alternate" href="/atom.xml" title="Blog of Scheme" type="application/atom+xml">
+
+<!--end rss-->
+<!--begin favicon-->
+
+<link rel="icon" href="/favicon.ico">
+
+<!--end favicon-->
+<!--begin style-->
+
+<!-- stylesheets list from config.yml -->
+
+<link rel="stylesheet" href="/css/hannah.css">
+
+
+<!--end style-->
+<meta name="generator" content="Hexo 4.2.1"></head>
+<!--end head-->
+<!--begin body-->
+
+<body class="container-fluid">
+
+    <!--begin menu-->
+    <div class="hannah-menu">
+    <i class="fh fh-ravelry fa-2x btn fixed-menu animated bounce" id="btn_menu" aria-hidden="true"></i>
+    <div class="menu-outer container-fluid hide animated" id="div_menu">
+        <div class="row" style="margin-bottom: 5px;">
+            
+            <div class="col-md-offset-2 col-md-3 col-xs-4 text-center left-social">
+                
+                <a target="_blank" href="https://github.com/marryton007" title="GitHub"><i class="fh fh-github"></i></a>
+                
+                <style>
+                    .left-social {
+                        height: 132px;
+                        line-height: 132px;
+                        font-size: 66px;
+                    }
+
+                    .left-social * {
+                        color: #f1ce8e;
+                    }
+
+                    @media (max-width: 767px) {
+                        .left-social {
+                            line-height: 132px;
+                            font-size: 33px;
+                        }
+                    }
+                </style>
+            </div>
+            <!--begin handImg-->
+            <div class="col-md-2 col-xs-4 text-center">
+                
+                <img src="/img/logo.png" alt="Head Image" class="img-circle">
+                
+            </div>
+            <!--end handImg-->
+            <div class="col-md-3 col-xs-4 text-center right-social">
+                
+                <style>
+                    .right-social {
+                        height: 132px;
+                        line-height: 132px;
+                        font-size: 66px;
+                    }
+
+                    @media (max-width: 767px) {
+                        .right-social {
+                            line-height: 132px;
+                            font-size: 33px;
+                        }
+                    }
+
+                    .right-social * {
+                        color: #f1ce8e;
+                    }
+                </style>
+            </div>
+        </div>
+        <div class="row">
+            <div class="menu-content col-md-8 col-md-push-2 col-xs-12 ">
+                <dl class="menu-content-item">
+                    <dt class="menu-content-title">
+                        <i class="fh fh-bars" aria-hidden="true"></i> Menu
+                    </dt>
+                    <dd class="menu-content-content">
+                        
+                        <div class="col-md-4 col-xs-6 col-sm-4 text-center animated tada">
+                            <a href="/" class="btn btn-block">
+                                
+                                <i class="fh fh-ravelry"></i>
+                                Home
+                            </a>
+                        </div>
+                        
+                        <div class="col-md-4 col-xs-6 col-sm-4 text-center animated tada">
+                            <a href="/categories" class="btn btn-block">
+                                
+                                <i class="fh fh-cubes"></i>
+                                Category
+                            </a>
+                        </div>
+                        
+                        <div class="col-md-4 col-xs-6 col-sm-4 text-center animated tada">
+                            <a href="/tags" class="btn btn-block">
+                                
+                                <i class="fh fh-tags"></i>
+                                Tag
+                            </a>
+                        </div>
+                        
+                        <div class="col-md-4 col-xs-6 col-sm-4 text-center animated tada">
+                            <a href="/archives" class="btn btn-block">
+                                
+                                <i class="fh fh-archive"></i>
+                                Archives
+                            </a>
+                        </div>
+                        
+                        <div class="col-md-4 col-xs-6 col-sm-4 text-center animated tada">
+                            <a href="/about" class="btn btn-block">
+                                
+                                <i class="fh fh-about"></i>
+                                About
+                            </a>
+                        </div>
+                        
+                        <div class="col-md-4 col-xs-6 col-sm-4 text-center animated tada">
+                            <a href="/doc" class="btn btn-block">
+                                
+                                <i class="fh fh-document"></i>
+                                Doc
+                            </a>
+                        </div>
+                        
+                        <div class="col-md-4 col-xs-6 col-sm-4 text-center animated tada">
+                            <a href="/plug" class="btn btn-block">
+                                
+                                <i class="fh fh-plug"></i>
+                                Plug
+                            </a>
+                        </div>
+                        
+                        <div class="col-md-4 col-xs-6 col-sm-4 text-center animated tada">
+                            <a href="/sitemap" class="btn btn-block">
+                                
+                                <i class="fh fh-sitemap"></i>
+                                SiteMap
+                            </a>
+                        </div>
+                        
+                        <div class="col-md-4 col-xs-6 col-sm-4 text-center animated tada">
+                            <a href="/atom.xml" class="btn btn-block">
+                                <i class="fh fh-rss" aria-hidden="true"></i> RSS
+                            </a>
+                        </div>
+                    </dd>
+                </dl>
+            </div>
+        </div>
+        <div class="row">
+            <div class="menu-content col-md-8 col-md-offset-2 col-xs-12 ">
+                <dl class="col-md-6 col-xs-6 menu-content-item">
+                    <dt class="menu-content-title">
+                        <i class="fh fh-cubes" aria-hidden="true"></i> Category
+                    </dt>
+                    <dd class="menu-content-content animated zoomIn">
+                        <ul class="menu-cate-list"><li class="menu-cate-list-item"><a class="menu-cate-list-link" href="/categories/blockchain/"><i class="fh fh-cube" aria-hidden="true"></i> blockchain</a><span class="menu-cate-list-count">7</span></li><li class="menu-cate-list-item"><a class="menu-cate-list-link" href="/categories/cluster/"><i class="fh fh-cube" aria-hidden="true"></i> cluster</a><span class="menu-cate-list-count">1</span></li><li class="menu-cate-list-item"><a class="menu-cate-list-link" href="/categories/code/"><i class="fh fh-cube" aria-hidden="true"></i> code</a><span class="menu-cate-list-count">1</span></li><li class="menu-cate-list-item"><a class="menu-cate-list-link" href="/categories/embedded/"><i class="fh fh-cube" aria-hidden="true"></i> embedded</a><span class="menu-cate-list-count">1</span></li><li class="menu-cate-list-item"><a class="menu-cate-list-link" href="/categories/web%E5%89%8D%E7%AB%AF/"><i class="fh fh-cube" aria-hidden="true"></i> web前端</a><span class="menu-cate-list-count">1</span></li></ul>
+                    </dd>
+                </dl>
+                <dl class="col-md-6 col-xs-6 menu-content-item">
+                    <dt class="menu-content-title">
+                        <i class="fh fh-tag" aria-hidden="true"></i> Tags
+                    </dt>
+                    <dd class="menu-content-content animated zoomIn">
+                        <ul class="menu-tag-list" itemprop="keywords"><li class="menu-tag-list-item"><a class="menu-tag-list-link" href="/tags/Android/" rel="tag"><i class="fh fh-tag" aria-hidden="true"></i> Android</a><span class="menu-tag-list-count">1</span></li><li class="menu-tag-list-item"><a class="menu-tag-list-link" href="/tags/adeb/" rel="tag"><i class="fh fh-tag" aria-hidden="true"></i> adeb</a><span class="menu-tag-list-count">1</span></li><li class="menu-tag-list-item"><a class="menu-tag-list-link" href="/tags/blockchain/" rel="tag"><i class="fh fh-tag" aria-hidden="true"></i> blockchain</a><span class="menu-tag-list-count">9</span></li><li class="menu-tag-list-item"><a class="menu-tag-list-link" href="/tags/cluster/" rel="tag"><i class="fh fh-tag" aria-hidden="true"></i> cluster</a><span class="menu-tag-list-count">1</span></li><li class="menu-tag-list-item"><a class="menu-tag-list-link" href="/tags/composer/" rel="tag"><i class="fh fh-tag" aria-hidden="true"></i> composer</a><span class="menu-tag-list-count">3</span></li><li class="menu-tag-list-item"><a class="menu-tag-list-link" href="/tags/fabric/" rel="tag"><i class="fh fh-tag" aria-hidden="true"></i> fabric</a><span class="menu-tag-list-count">2</span></li><li class="menu-tag-list-item"><a class="menu-tag-list-link" href="/tags/geth/" rel="tag"><i class="fh fh-tag" aria-hidden="true"></i> geth</a><span class="menu-tag-list-count">1</span></li><li class="menu-tag-list-item"><a class="menu-tag-list-link" href="/tags/hyperledge/" rel="tag"><i class="fh fh-tag" aria-hidden="true"></i> hyperledge</a><span class="menu-tag-list-count">1</span></li><li class="menu-tag-list-item"><a class="menu-tag-list-link" href="/tags/hyperledger/" rel="tag"><i class="fh fh-tag" aria-hidden="true"></i> hyperledger</a><span class="menu-tag-list-count">5</span></li><li class="menu-tag-list-item"><a class="menu-tag-list-link" href="/tags/linux/" rel="tag"><i class="fh fh-tag" aria-hidden="true"></i> linux</a><span class="menu-tag-list-count">1</span></li><li class="menu-tag-list-item"><a class="menu-tag-list-link" href="/tags/proxmox/" rel="tag"><i class="fh fh-tag" aria-hidden="true"></i> proxmox</a><span class="menu-tag-list-count">1</span></li><li class="menu-tag-list-item"><a class="menu-tag-list-link" href="/tags/start/" rel="tag"><i class="fh fh-tag" aria-hidden="true"></i> start</a><span class="menu-tag-list-count">1</span></li><li class="menu-tag-list-item"><a class="menu-tag-list-link" href="/tags/test/" rel="tag"><i class="fh fh-tag" aria-hidden="true"></i> test</a><span class="menu-tag-list-count">1</span></li></ul>
+                    </dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>
+    <!--end menu-->
+
+    <div class="row hannah-body">
+        <div class="col-md-8 col-md-push-2 col-xs-12">
+            <!--begin breadcrumb-->
+            <div class="bread-crumb">
+    <ul class="bread-crumb-menu animated rubberBand">
+        <li><a href="/"><i class="fh fh-ravelry" aria-hidden="true"></i> Home</a></li>
+        
+        <li><a href="/categories/blockchain/"><i class="fh fh-cube" aria-hidden="true"></i> blockchain</a>
+        </li>
+        
+        <li>
+            
+            <i class="fh fh-newspaper-o" aria-hidden="true"></i>
+            
+            使用composer+k8s部署hyperledger fabric 1.1.0
+        </li>
+        
+    </ul>
+    <div class="bread-crumb-search">
+        <div class="search">
+    <i class="fh fh-search icon-search"></i>
+    <input placeholder="Search ..." onkeyup="searchFunc(this,event,'/search.xml')"
+           class="input-search animated fadeInRight"/>
+    <div class="search-result animated fadeInRight">
+        <a class="animated tada col-lg-12 search-result-item result-link" href="/2022/04/29/embedded/adeb/">Android环境中bcc/bpftrace环境搭建</a><a class="animated tada col-lg-12 search-result-item result-link" href="/2020/06/08/test/">test</a><a class="animated tada col-lg-12 search-result-item result-link" href="/2018/12/08/fabric/peer-process/">Hyperledge fabric peer 流程分析</a><a class="animated tada col-lg-12 search-result-item result-link" href="/2018/11/08/proxmox/proxmox-setup/">proxmox 集群搭建</a><a class="animated tada col-lg-12 search-result-item result-link" href="/2018/04/22/blockchain/composer-k8s-fabric-deploy/">使用composer+k8s部署hyperledger fabric 1.1.0</a><a class="animated tada col-lg-12 search-result-item result-link" href="/2018/04/13/blockchain/geth-json-rpc/">以太坊节点geth json rpc使用指南</a><a class="animated tada col-lg-12 search-result-item result-link" href="/2017/09/28/blockchain/kafka-cluster/">搭建Kafka集群</a><a class="animated tada col-lg-12 search-result-item result-link" href="/2017/09/04/blockchain/hyperledger-composer-learn/">hyperledger composer 实战</a><a class="animated tada col-lg-12 search-result-item result-link" href="/2017/08/24/blockchain/fabric-transaction-flow/">hyperledger fabric交易流程</a><a class="animated tada col-lg-12 search-result-item result-link" href="/2017/08/23/blockchain/first-fabric-application/">基于hyperledger fabric网络的第一个应用</a><a class="animated tada col-lg-12 search-result-item result-link" href="/2017/08/22/blockchain/build-first-fabric-network/">使用hyperledger fabric构建你的第一个区块链网络</a><a class="animated tada col-lg-12 search-result-item result-link" href="/2017/08/18/blockchain/blockchain-describe/">白话区块链</a>
+    </div>
+</div>
+    </div>
+</div>
+            <!--end breadcrumb-->
+            <!--begin body-->
+            <article class="post animated rollIn">
+    <h1 class="post-title">使用composer+k8s部署hyperledger fabric 1.1.0</h1>
+    <div class="post-subtitle">
+        
+        <time datetime="2018-04-22T06:17:39.000Z" class="item">
+            <i class="fh fh-calendar" aria-hidden="true"></i>&nbsp;&nbsp;2018-04-22
+        </time>
+        
+        
+        <span class="item">
+      <i class="fh fh-cubes" aria-hidden="true"></i>&nbsp;
+            
+            <a class="label label-primary tags" href="/categories/blockchain/">
+           <i class="fh fh-cube" aria-hidden="true"></i>&nbsp;blockchain
+        </a>
+            
+        </span>
+        
+        
+        <span class="item">
+        <i class="fh fh-tags" aria-hidden="true"></i>&nbsp;
+            
+            <a class="label label-info tags" href="/tags/blockchain/">
+            <i class="fh fh-tag" aria-hidden="true"></i>&nbsp;blockchain
+            </a>
+            
+            <a class="label label-info tags" href="/tags/hyperledger/">
+            <i class="fh fh-tag" aria-hidden="true"></i>&nbsp;hyperledger
+            </a>
+            
+            <a class="label label-info tags" href="/tags/composer/">
+            <i class="fh fh-tag" aria-hidden="true"></i>&nbsp;composer
+            </a>
+            
+        </span>
+        
+    </div>
+    
+    <p>最近在<a href="https://github.com/marryton007/hyperledger-fabric-k8s" target="_blank" rel="noopener">K8s 上升级了 fabric 网络</a>, 然后想结合<a href="https://hyperledger.github.io/composer/latest/index.html" target="_blank" rel="noopener">Hyperledger Composer</a>来部署一些例子。中间遇到了一些问题，走了一些弯路，在<a href="https://github.com/marryton007/composer-work" target="_blank" rel="noopener">这里记录</a>下来。其实问题答案很简单，一些没注意的地方。</p>
+<p>首先说一下背景，在这篇<a href="https://hyperledger.github.io/composer/latest/tutorials/deploy-to-fabric-multi-org" target="_blank" rel="noopener">部署 Fabric 多组织</a>的教程中，最重要的是其中的连接描述文件，这个文件中描述了整个 Fabric 网络的结构，如有几个组织？每个组织下有几个 Peer？有多少个 Orderer？有哪些通道？又有哪些 Peer 加入了通道？连接时是否使用 TLS？等等。在依照教程走完后，又尝试在原先的 K8s 环境中也进行一次部署，这里就产生问题了。</p>
+<ol>
+<li><p>在 k8s 中无法正常导入 network card</p>
+<ul>
+<li><p>教程中使用 TLS 连接各 Peer 节点</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&quot;peer1.org1.example.com&quot;: &#123;</span><br><span class="line">  &quot;url&quot;: &quot;grpcs:&#x2F;&#x2F;localhost:8051&quot;,</span><br><span class="line">  &quot;eventUrl&quot;: &quot;grpcs:&#x2F;&#x2F;localhost:8053&quot;,</span><br><span class="line">  &quot;grpcOptions&quot;: &#123;</span><br><span class="line">    &quot;ssl-target-name-override&quot;: &quot;peer1.org1.example.com&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;tlsCACerts&quot;: &#123;</span><br><span class="line">    &quot;pem&quot;: &quot;-----BEGIN CERTIFICATE-----\nMIICSTCCAe+gAwIBAgIQUF0P&#x2F;...&quot;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>K8S 中没有使用 TLS 方式<strong><em>(错误)</em></strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&quot;peer1.org1.example.com&quot;: &#123;</span><br><span class="line">  &quot;url&quot;: &quot;grpcs:&#x2F;&#x2F;localhost:8051&quot;,</span><br><span class="line">  &quot;eventUrl&quot;: &quot;grpcs:&#x2F;&#x2F;localhost:8053&quot;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>正确的方式(<strong><em>注意区分 grpcs 和 grpc</em></strong>)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&quot;peer1.org1.example.com&quot;: &#123;</span><br><span class="line">  &quot;url&quot;: &quot;grpc:&#x2F;&#x2F;localhost:8051&quot;,</span><br><span class="line">  &quot;eventUrl&quot;: &quot;grpc:&#x2F;&#x2F;localhost:8053&quot;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>怎么发现的</p>
+<p>在<a href="https://github.com/marryton007/composer-work" target="_blank" rel="noopener">这个项目</a>中，运行脚本时有条命令执行失败</p>
+<p><code>composer card import -f PeerAdmin@byfn-network-org1.card ... PEM encoded certificate is required.</code></p>
+<p>这里使用了 Nodejs 的 Inspect 功能</p>
+<pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node --inspect-brk ~&#x2F;.nvm&#x2F;versions&#x2F;node&#x2F;v8.11.1&#x2F;bin&#x2F;composer card import -f PeerAdmin@byfn-network-org1.card</span><br></pre></td></tr></table></figure></code></pre><p>在 Google 浏览器打开 chrome://inspect</p>
+<p><img src="http://ou36ephoe.bkt.clouddn.com/15244705012669.jpg" alt=""></p>
+<p>打开右上角的 pause on caught exception 开关</p>
+<p><img src="http://ou36ephoe.bkt.clouddn.com/15244705472639.jpg" alt=""></p>
+<p>在跳过前几次异常后，会跳到~/.nvm/versions/node/v8.11.1/lib/node_modules/composer-cli/node_modules/fabric-client/lib/Remote.js 这个文件中这一段代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">if (protocol &#x3D;&#x3D;&#x3D; &#39;grpc&#39;) &#123;</span><br><span class="line">  this.addr &#x3D; purl.host;</span><br><span class="line">  this.creds &#x3D; grpc.credentials.createInsecure();</span><br><span class="line">&#125; else if (protocol &#x3D;&#x3D;&#x3D; &#39;grpcs&#39;) &#123;</span><br><span class="line">  if(!(typeof pem &#x3D;&#x3D;&#x3D; &#39;string&#39;)) &#123;</span><br><span class="line">    throw new Error(&#39;PEM encoded certificate is required.&#39;);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<p>当时看到这里时，顿时就是明白了，grpcs 代表 TLS 连接，而 grpc 则代表非加密连接，修改连接配置文件，代码成功执行。</p>
+</li>
+</ul>
+</li>
+<li><p>在 k8s，无法正常执行 composer network start,也即无法实例化 Chainacode</p>
+<pre><code>这个问题折腾了一个下午，通过查看容器日志，发现在执行Chaincode实例化的化时候，需要生成类似如下镜像文件
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">    deploy@devops2:~$ docker images |ag dev</span><br><span class="line"></span><br><span class="line">dev-peer0.org2-trade-network-0.2.4-deploy.0-xxx</span><br><span class="line">&#96;其中peer0.org2是节点名字，表示组织2上的peer0这个节点，trade-network是composer生成的Business Network名称，0.2.4-deploy.0是Business Network的版本号，这个镜像一开始是没有的，需要根据hyperledger&#x2F;fabric-ccenv构建出来，在我们的这个K8S环境中，就是这个镜像构建失败，导致Chaincode无法实例化而出现问题。这也是1.1.0这个版本与前几个版本的一个区别，在构建镜像的过程中，需要通过NPM下载一些工具，却发现NPM下载失败。 一开始我还怀疑是不是翻墙的问题，结果发现是Docker容器启动后根本就无法连接网络，这就郁闷了。这里用到了一些测试工具。&#96;</span><br><span class="line">docker run -it webwurst&#x2F;curl-utils &gt; ping www.baidu.com &gt; curl -v www.baidu.com</span><br><span class="line">&#96;问题的根本原因：错误的docker启动项&#96;</span><br><span class="line">deploy@devops2:~\$ cat &#x2F;etc&#x2F;systemd&#x2F;system&#x2F;docker.service.d&#x2F;docker-options.conf</span><br><span class="line">[Service]</span><br><span class="line">Environment&#x3D;&quot;DOCKER_OPTS&#x3D;--insecure-registry&#x3D;10.233.0.0&#x2F;18 --graph&#x3D;&#x2F;var&#x2F;lib&#x2F;docker --log-opt max-size&#x3D;50m --log-opt max-file&#x3D;5 --iptables&#x3D;false&quot;</span><br></pre></td></tr></table></figure></code></pre><p> 在 dockerd 的 man 手册页里面，–iptables 默认为 true，不知道为什么这里设置成了 false，删除掉这个选项后，系统工作正常了。</p>
+<pre><code></code></pre></li>
+</ol>
+
+</article>
+
+<div class="animated bounceInDown paginations">
+    <div class="col-md-8 col-md-push-2 col-xs-12">
+        <nav>
+            
+            <a href="/2018/11/08/proxmox/proxmox-setup/" class="prev col-md-2 col-xs-4 text-left">&larr; Prev</a>
+            
+            <span
+                class="page-content col-md-8  col-xs-4 text-center">
+                
+            </span>
+            
+            <a href="/2018/04/13/blockchain/geth-json-rpc/" class="next col-md-2 col-xs-4 text-right">Next &rarr;</a>
+            
+        </nav>
+        <div>
+            <div class="col-md-6 col-xs-6 text-left">
+                
+                proxmox 集群搭建
+                
+            </div>
+            <div class="col-md-6 col-xs-6 text-right">
+                
+                以太坊节点geth json rpc使用指南
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+            <!--end body-->
+            <!--begin comments-->
+            
+<div class="comments">
+    
+
+    
+    
+</div>
+
+
+            <!--end comments-->
+        </div>
+    </div>
+
+    <!--begin footer-->
+    <footer id="footer" class="footer animated fadeInUp hide">
+    <p><i class="copy">&copy;</i> 2022 <a href="http://marryton007.github.io">Scheme J</a> All Right Reserved.</p>
+    <p>Powered by <a href="http://hexo.io" target="_blank" rel="external nofollow noopener">Hexo</a>. Theme by <a href="https://github.com/objectyan/hexo-theme-hannah" target="_blank" rel="external nofollow noopener">hannah</a></p>
+</footer>
+    <!--end footer-->
+
+    
+    <!-- scripts list from theme config.yml -->
+    
+    <script src="/js/hannah.js"></script>
+    
+    
+    <!--begin analytics-->
+    
+
+    <!--end analytics-->
+</body>
+<!--end body-->
+<!--begin canvas-nest-->
+<script>
+    var nesturl = "https://unpkg.com/canvas-nest.js/dist/canvas-nest.js";
+    var c = document.getElementsByTagName("body")[0] || document.body || document.documentElement;
+    var b = document.createElement("script");
+    b.setAttribute("type", "text/javascript");
+    b.setAttribute("src", nesturl);
+    b.setAttribute("color",
+        `${ Math.floor(Math.random()*256)},${ Math.floor(Math.random()*256)},${ Math.floor(Math.random()*256)}`);
+    b.setAttribute("opacity", Math.random());
+    b.setAttribute("count", parseInt((Math.random() * 500) || 99));
+    c.appendChild(b)
+</script>
+<!--end canvas-nest-->
+
+</html>

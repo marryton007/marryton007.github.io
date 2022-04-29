@@ -1,0 +1,373 @@
+
+
+<!DOCTYPE html>
+<html lang="zh">
+<!--begin head-->
+
+<head>
+    <meta charset="utf-8">
+<!--begin title-->
+
+<title>
+    
+    白话区块链 |
+    
+    Blog of Scheme</title>
+<!--end title-->
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<!--begin mete-->
+
+<meta name="description" content="Blog of Scheme, misc things of computer"/>
+
+<meta name="author" content="Scheme J"/>
+
+<!--end mete-->
+<!--begin keywords-->
+<meta name="keywords" content="Android,adeb,blockchain,cluster,composer,fabric,geth,hyperledge,hyperledger,linux,proxmox,start,test"/>
+<!--end keywords-->
+<!--begin rss-->
+
+<link rel="alternate" href="/atom.xml" title="Blog of Scheme" type="application/atom+xml">
+
+<!--end rss-->
+<!--begin favicon-->
+
+<link rel="icon" href="/favicon.ico">
+
+<!--end favicon-->
+<!--begin style-->
+
+<!-- stylesheets list from config.yml -->
+
+<link rel="stylesheet" href="/css/hannah.css">
+
+
+<!--end style-->
+<meta name="generator" content="Hexo 4.2.1"></head>
+<!--end head-->
+<!--begin body-->
+
+<body class="container-fluid">
+
+    <!--begin menu-->
+    <div class="hannah-menu">
+    <i class="fh fh-ravelry fa-2x btn fixed-menu animated bounce" id="btn_menu" aria-hidden="true"></i>
+    <div class="menu-outer container-fluid hide animated" id="div_menu">
+        <div class="row" style="margin-bottom: 5px;">
+            
+            <div class="col-md-offset-2 col-md-3 col-xs-4 text-center left-social">
+                
+                <a target="_blank" href="https://github.com/marryton007" title="GitHub"><i class="fh fh-github"></i></a>
+                
+                <style>
+                    .left-social {
+                        height: 132px;
+                        line-height: 132px;
+                        font-size: 66px;
+                    }
+
+                    .left-social * {
+                        color: #f1ce8e;
+                    }
+
+                    @media (max-width: 767px) {
+                        .left-social {
+                            line-height: 132px;
+                            font-size: 33px;
+                        }
+                    }
+                </style>
+            </div>
+            <!--begin handImg-->
+            <div class="col-md-2 col-xs-4 text-center">
+                
+                <img src="/img/logo.png" alt="Head Image" class="img-circle">
+                
+            </div>
+            <!--end handImg-->
+            <div class="col-md-3 col-xs-4 text-center right-social">
+                
+                <style>
+                    .right-social {
+                        height: 132px;
+                        line-height: 132px;
+                        font-size: 66px;
+                    }
+
+                    @media (max-width: 767px) {
+                        .right-social {
+                            line-height: 132px;
+                            font-size: 33px;
+                        }
+                    }
+
+                    .right-social * {
+                        color: #f1ce8e;
+                    }
+                </style>
+            </div>
+        </div>
+        <div class="row">
+            <div class="menu-content col-md-8 col-md-push-2 col-xs-12 ">
+                <dl class="menu-content-item">
+                    <dt class="menu-content-title">
+                        <i class="fh fh-bars" aria-hidden="true"></i> Menu
+                    </dt>
+                    <dd class="menu-content-content">
+                        
+                        <div class="col-md-4 col-xs-6 col-sm-4 text-center animated tada">
+                            <a href="/" class="btn btn-block">
+                                
+                                <i class="fh fh-ravelry"></i>
+                                Home
+                            </a>
+                        </div>
+                        
+                        <div class="col-md-4 col-xs-6 col-sm-4 text-center animated tada">
+                            <a href="/categories" class="btn btn-block">
+                                
+                                <i class="fh fh-cubes"></i>
+                                Category
+                            </a>
+                        </div>
+                        
+                        <div class="col-md-4 col-xs-6 col-sm-4 text-center animated tada">
+                            <a href="/tags" class="btn btn-block">
+                                
+                                <i class="fh fh-tags"></i>
+                                Tag
+                            </a>
+                        </div>
+                        
+                        <div class="col-md-4 col-xs-6 col-sm-4 text-center animated tada">
+                            <a href="/archives" class="btn btn-block">
+                                
+                                <i class="fh fh-archive"></i>
+                                Archives
+                            </a>
+                        </div>
+                        
+                        <div class="col-md-4 col-xs-6 col-sm-4 text-center animated tada">
+                            <a href="/about" class="btn btn-block">
+                                
+                                <i class="fh fh-about"></i>
+                                About
+                            </a>
+                        </div>
+                        
+                        <div class="col-md-4 col-xs-6 col-sm-4 text-center animated tada">
+                            <a href="/doc" class="btn btn-block">
+                                
+                                <i class="fh fh-document"></i>
+                                Doc
+                            </a>
+                        </div>
+                        
+                        <div class="col-md-4 col-xs-6 col-sm-4 text-center animated tada">
+                            <a href="/plug" class="btn btn-block">
+                                
+                                <i class="fh fh-plug"></i>
+                                Plug
+                            </a>
+                        </div>
+                        
+                        <div class="col-md-4 col-xs-6 col-sm-4 text-center animated tada">
+                            <a href="/sitemap" class="btn btn-block">
+                                
+                                <i class="fh fh-sitemap"></i>
+                                SiteMap
+                            </a>
+                        </div>
+                        
+                        <div class="col-md-4 col-xs-6 col-sm-4 text-center animated tada">
+                            <a href="/atom.xml" class="btn btn-block">
+                                <i class="fh fh-rss" aria-hidden="true"></i> RSS
+                            </a>
+                        </div>
+                    </dd>
+                </dl>
+            </div>
+        </div>
+        <div class="row">
+            <div class="menu-content col-md-8 col-md-offset-2 col-xs-12 ">
+                <dl class="col-md-6 col-xs-6 menu-content-item">
+                    <dt class="menu-content-title">
+                        <i class="fh fh-cubes" aria-hidden="true"></i> Category
+                    </dt>
+                    <dd class="menu-content-content animated zoomIn">
+                        <ul class="menu-cate-list"><li class="menu-cate-list-item"><a class="menu-cate-list-link" href="/categories/blockchain/"><i class="fh fh-cube" aria-hidden="true"></i> blockchain</a><span class="menu-cate-list-count">7</span></li><li class="menu-cate-list-item"><a class="menu-cate-list-link" href="/categories/cluster/"><i class="fh fh-cube" aria-hidden="true"></i> cluster</a><span class="menu-cate-list-count">1</span></li><li class="menu-cate-list-item"><a class="menu-cate-list-link" href="/categories/code/"><i class="fh fh-cube" aria-hidden="true"></i> code</a><span class="menu-cate-list-count">1</span></li><li class="menu-cate-list-item"><a class="menu-cate-list-link" href="/categories/embedded/"><i class="fh fh-cube" aria-hidden="true"></i> embedded</a><span class="menu-cate-list-count">1</span></li><li class="menu-cate-list-item"><a class="menu-cate-list-link" href="/categories/web%E5%89%8D%E7%AB%AF/"><i class="fh fh-cube" aria-hidden="true"></i> web前端</a><span class="menu-cate-list-count">1</span></li></ul>
+                    </dd>
+                </dl>
+                <dl class="col-md-6 col-xs-6 menu-content-item">
+                    <dt class="menu-content-title">
+                        <i class="fh fh-tag" aria-hidden="true"></i> Tags
+                    </dt>
+                    <dd class="menu-content-content animated zoomIn">
+                        <ul class="menu-tag-list" itemprop="keywords"><li class="menu-tag-list-item"><a class="menu-tag-list-link" href="/tags/Android/" rel="tag"><i class="fh fh-tag" aria-hidden="true"></i> Android</a><span class="menu-tag-list-count">1</span></li><li class="menu-tag-list-item"><a class="menu-tag-list-link" href="/tags/adeb/" rel="tag"><i class="fh fh-tag" aria-hidden="true"></i> adeb</a><span class="menu-tag-list-count">1</span></li><li class="menu-tag-list-item"><a class="menu-tag-list-link" href="/tags/blockchain/" rel="tag"><i class="fh fh-tag" aria-hidden="true"></i> blockchain</a><span class="menu-tag-list-count">9</span></li><li class="menu-tag-list-item"><a class="menu-tag-list-link" href="/tags/cluster/" rel="tag"><i class="fh fh-tag" aria-hidden="true"></i> cluster</a><span class="menu-tag-list-count">1</span></li><li class="menu-tag-list-item"><a class="menu-tag-list-link" href="/tags/composer/" rel="tag"><i class="fh fh-tag" aria-hidden="true"></i> composer</a><span class="menu-tag-list-count">3</span></li><li class="menu-tag-list-item"><a class="menu-tag-list-link" href="/tags/fabric/" rel="tag"><i class="fh fh-tag" aria-hidden="true"></i> fabric</a><span class="menu-tag-list-count">2</span></li><li class="menu-tag-list-item"><a class="menu-tag-list-link" href="/tags/geth/" rel="tag"><i class="fh fh-tag" aria-hidden="true"></i> geth</a><span class="menu-tag-list-count">1</span></li><li class="menu-tag-list-item"><a class="menu-tag-list-link" href="/tags/hyperledge/" rel="tag"><i class="fh fh-tag" aria-hidden="true"></i> hyperledge</a><span class="menu-tag-list-count">1</span></li><li class="menu-tag-list-item"><a class="menu-tag-list-link" href="/tags/hyperledger/" rel="tag"><i class="fh fh-tag" aria-hidden="true"></i> hyperledger</a><span class="menu-tag-list-count">5</span></li><li class="menu-tag-list-item"><a class="menu-tag-list-link" href="/tags/linux/" rel="tag"><i class="fh fh-tag" aria-hidden="true"></i> linux</a><span class="menu-tag-list-count">1</span></li><li class="menu-tag-list-item"><a class="menu-tag-list-link" href="/tags/proxmox/" rel="tag"><i class="fh fh-tag" aria-hidden="true"></i> proxmox</a><span class="menu-tag-list-count">1</span></li><li class="menu-tag-list-item"><a class="menu-tag-list-link" href="/tags/start/" rel="tag"><i class="fh fh-tag" aria-hidden="true"></i> start</a><span class="menu-tag-list-count">1</span></li><li class="menu-tag-list-item"><a class="menu-tag-list-link" href="/tags/test/" rel="tag"><i class="fh fh-tag" aria-hidden="true"></i> test</a><span class="menu-tag-list-count">1</span></li></ul>
+                    </dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>
+    <!--end menu-->
+
+    <div class="row hannah-body">
+        <div class="col-md-8 col-md-push-2 col-xs-12">
+            <!--begin breadcrumb-->
+            <div class="bread-crumb">
+    <ul class="bread-crumb-menu animated rubberBand">
+        <li><a href="/"><i class="fh fh-ravelry" aria-hidden="true"></i> Home</a></li>
+        
+        <li><a href="/categories/blockchain/"><i class="fh fh-cube" aria-hidden="true"></i> blockchain</a>
+        </li>
+        
+        <li>
+            
+            <i class="fh fh-newspaper-o" aria-hidden="true"></i>
+            
+            白话区块链
+        </li>
+        
+    </ul>
+    <div class="bread-crumb-search">
+        <div class="search">
+    <i class="fh fh-search icon-search"></i>
+    <input placeholder="Search ..." onkeyup="searchFunc(this,event,'/search.xml')"
+           class="input-search animated fadeInRight"/>
+    <div class="search-result animated fadeInRight">
+        <a class="animated tada col-lg-12 search-result-item result-link" href="/2022/04/29/embedded/adeb/">Android环境中bcc/bpftrace环境搭建</a><a class="animated tada col-lg-12 search-result-item result-link" href="/2020/06/08/test/">test</a><a class="animated tada col-lg-12 search-result-item result-link" href="/2018/12/08/fabric/peer-process/">Hyperledge fabric peer 流程分析</a><a class="animated tada col-lg-12 search-result-item result-link" href="/2018/11/08/proxmox/proxmox-setup/">proxmox 集群搭建</a><a class="animated tada col-lg-12 search-result-item result-link" href="/2018/04/22/blockchain/composer-k8s-fabric-deploy/">使用composer+k8s部署hyperledger fabric 1.1.0</a><a class="animated tada col-lg-12 search-result-item result-link" href="/2018/04/13/blockchain/geth-json-rpc/">以太坊节点geth json rpc使用指南</a><a class="animated tada col-lg-12 search-result-item result-link" href="/2017/09/28/blockchain/kafka-cluster/">搭建Kafka集群</a><a class="animated tada col-lg-12 search-result-item result-link" href="/2017/09/04/blockchain/hyperledger-composer-learn/">hyperledger composer 实战</a><a class="animated tada col-lg-12 search-result-item result-link" href="/2017/08/24/blockchain/fabric-transaction-flow/">hyperledger fabric交易流程</a><a class="animated tada col-lg-12 search-result-item result-link" href="/2017/08/23/blockchain/first-fabric-application/">基于hyperledger fabric网络的第一个应用</a><a class="animated tada col-lg-12 search-result-item result-link" href="/2017/08/22/blockchain/build-first-fabric-network/">使用hyperledger fabric构建你的第一个区块链网络</a><a class="animated tada col-lg-12 search-result-item result-link" href="/2017/08/18/blockchain/blockchain-describe/">白话区块链</a>
+    </div>
+</div>
+    </div>
+</div>
+            <!--end breadcrumb-->
+            <!--begin body-->
+            <article class="post animated rollIn">
+    <h1 class="post-title">白话区块链</h1>
+    <div class="post-subtitle">
+        
+        <time datetime="2017-08-18T06:17:39.000Z" class="item">
+            <i class="fh fh-calendar" aria-hidden="true"></i>&nbsp;&nbsp;2017-08-18
+        </time>
+        
+        
+        <span class="item">
+      <i class="fh fh-cubes" aria-hidden="true"></i>&nbsp;
+            
+            <a class="label label-primary tags" href="/categories/blockchain/">
+           <i class="fh fh-cube" aria-hidden="true"></i>&nbsp;blockchain
+        </a>
+            
+        </span>
+        
+        
+        <span class="item">
+        <i class="fh fh-tags" aria-hidden="true"></i>&nbsp;
+            
+            <a class="label label-info tags" href="/tags/blockchain/">
+            <i class="fh fh-tag" aria-hidden="true"></i>&nbsp;blockchain
+            </a>
+            
+        </span>
+        
+    </div>
+    
+    <h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><pre><code>这里将区块链定义为：分布式的共享账本，具有去中心化、点对点通讯、共识机制、加密算法等特征。</code></pre><h3 id="历史"><a href="#历史" class="headerlink" title="历史"></a>历史</h3><pre><code>自 2008 年神人**中本聪**发表比特币白皮书以来，人们对比特币背后的区块链技术愈发感兴趣，这也导致区块链技术快速发展。如果说[比特币][bitcoin]代表了第一代区块链技术，那[以太坊][ethereum]可以称之为第二代区块链技术，智能合约的出现将区块链的应用范围大大扩展，不再限于发行、交易数字货币，而是可以应用于各行各业，如金融，博彩，存证等。可以预见，随着区块链技术的发展，去中心化应用将会占据越来越大的空间。</code></pre><h3 id="主要组件"><a href="#主要组件" class="headerlink" title="主要组件"></a>主要组件</h3><pre><code>- 通讯层
+  通讯层是指区块链网络中各节点间的通讯方式。由于区块链网是一个去中心化的网络，没有特定哪个节点是网络的中心服务器，反而是网络中的每个节点既是客户端，也是服务器，_我为人人，人人为我_，每个节点都是平等的，非常像以前 BT 网络，区块链的底层通讯协议也正是建立在 P2P 协议上。
+
+- 数据层
+  同理，区块链网络中没有特定的中心服务器，那数据是存放在哪的呢？答案是存在每一个节点上，每个节点上的数据都是一样的，是全网同步的，这即是所谓的分布式共享账本。共享的涵义有 2 层，1 是每个节点都可以查看账本，2 是每个节点都可以参与记账。
+
+- 共识层
+
+  - 什么是共识？共识即某些人对某件事得到统一的结论，在区块链上是对账本的内容达成共识。在区块链网络中，每秒都会发生大量的交易，这些交易能否生效，谁先谁后，如何避免*双花(同 1 笔钱共 2 次)*等，这都是共识要考虑的问题。
+
+  - 如何达成共识？这里要依赖共识算法，如典型的共识算法 POW(工作量证明)，什么是工作量证明？在职场中，我们看你有没有学士文凭来验证你是否上过大学，通过查看房间是否卫生来确定是否已经打扫过，这就是工作量证明。在比特币网络中，在所有节点上通过计算[hash 谜题][hash]来竞争，计算[hash 谜题][hash]的过程就是一种工作量证明，只有最快完成工作的节点才拥有记账权，一旦某个节点完成 hash 计算，则本轮竞争结束，重新开始下一个循环。比特币正是由这一个又一个的循环来完成区块链的记账过程的，在每一个循环过程中，最先完成计算，获得记账权的节点会获得一定数量的比特币，这就是在挖矿，这个节点此时叫矿工。</code></pre><h3 id="可选组件"><a href="#可选组件" class="headerlink" title="可选组件"></a>可选组件</h3><pre><code>- 激励层</code></pre><h3 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h3><pre><code>根据区块链是否公开，可以将区块链私链和公链。
+
+    * 公链，任何节点都可以随时加入或退出，一般不需要身份验证，隐私性比较强，如[比特币][bitcoin]，[以太坊] [ethereum]，[小蚁][neo]，因为对节点的身份不做限制，也就是说节点间是互相不信任的
+
+    * 私链，私链一般用在数据需要保密，对网络中节点有身份认证的要求，常见于企业与企业之间，或是部门与部门之间，节点之间彼此相信，如[超级账本][hyperledger]。</code></pre><h3 id="智能合约"><a href="#智能合约" class="headerlink" title="智能合约"></a>智能合约</h3><pre><code>- 什么是智能合约
+  传统合约是以纸质的形式签订，是否履行也依赖于人的主观性。智能合约本质上是一段电脑程序，合同条款以数字形式保存，在满足一定条件时自动触发执行。可以想像，这种方式将会减少多少*老赖*。
+
+- 智能合约用途
+  - 发行代币，这是区块链的老本行，不能忘。
+  - 数据上链，比如说存款，链上仅提供设置余额的功能
+  - 业务上链，还是说存款，链上还要提供存、取功能，取的时候要判断是否余额足够等情况。</code></pre>
+</article>
+<ol class="animated rollIn hannah-toc"><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-3"><a class="animated rollIn hannah-toc-link" href="#定义"><span class="animated rollIn hannah-toc-text">定义</span></a></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-3"><a class="animated rollIn hannah-toc-link" href="#历史"><span class="animated rollIn hannah-toc-text">历史</span></a></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-3"><a class="animated rollIn hannah-toc-link" href="#主要组件"><span class="animated rollIn hannah-toc-text">主要组件</span></a></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-3"><a class="animated rollIn hannah-toc-link" href="#可选组件"><span class="animated rollIn hannah-toc-text">可选组件</span></a></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-3"><a class="animated rollIn hannah-toc-link" href="#分类"><span class="animated rollIn hannah-toc-text">分类</span></a></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-3"><a class="animated rollIn hannah-toc-link" href="#智能合约"><span class="animated rollIn hannah-toc-text">智能合约</span></a></li></ol>
+<div class="animated bounceInDown paginations">
+    <div class="col-md-8 col-md-push-2 col-xs-12">
+        <nav>
+            
+            <a href="/2017/08/22/blockchain/build-first-fabric-network/" class="prev col-md-2 col-xs-4 text-left">&larr; Prev</a>
+            
+            <span
+                class="page-content col-md-8  col-xs-4 text-center">
+                
+            </span>
+            
+        </nav>
+        <div>
+            <div class="col-md-6 col-xs-6 text-left">
+                
+                使用hyperledger fabric构建你的第一个区块链网络
+                
+            </div>
+            <div class="col-md-6 col-xs-6 text-right">
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+            <!--end body-->
+            <!--begin comments-->
+            
+<div class="comments">
+    
+
+    
+    
+</div>
+
+
+            <!--end comments-->
+        </div>
+    </div>
+
+    <!--begin footer-->
+    <footer id="footer" class="footer animated fadeInUp hide">
+    <p><i class="copy">&copy;</i> 2022 <a href="http://marryton007.github.io">Scheme J</a> All Right Reserved.</p>
+    <p>Powered by <a href="http://hexo.io" target="_blank" rel="external nofollow noopener">Hexo</a>. Theme by <a href="https://github.com/objectyan/hexo-theme-hannah" target="_blank" rel="external nofollow noopener">hannah</a></p>
+</footer>
+    <!--end footer-->
+
+    
+    <!-- scripts list from theme config.yml -->
+    
+    <script src="/js/hannah.js"></script>
+    
+    
+    <!--begin analytics-->
+    
+
+    <!--end analytics-->
+</body>
+<!--end body-->
+<!--begin canvas-nest-->
+<script>
+    var nesturl = "https://unpkg.com/canvas-nest.js/dist/canvas-nest.js";
+    var c = document.getElementsByTagName("body")[0] || document.body || document.documentElement;
+    var b = document.createElement("script");
+    b.setAttribute("type", "text/javascript");
+    b.setAttribute("src", nesturl);
+    b.setAttribute("color",
+        `${ Math.floor(Math.random()*256)},${ Math.floor(Math.random()*256)},${ Math.floor(Math.random()*256)}`);
+    b.setAttribute("opacity", Math.random());
+    b.setAttribute("count", parseInt((Math.random() * 500) || 99));
+    c.appendChild(b)
+</script>
+<!--end canvas-nest-->
+
+</html>

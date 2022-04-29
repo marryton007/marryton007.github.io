@@ -1,0 +1,395 @@
+
+
+<!DOCTYPE html>
+<html lang="zh">
+<!--begin head-->
+
+<head>
+    <meta charset="utf-8">
+<!--begin title-->
+
+<title>
+    
+    Android环境中bcc/bpftrace环境搭建 |
+    
+    Blog of Scheme</title>
+<!--end title-->
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<!--begin mete-->
+
+<meta name="description" content="Blog of Scheme, misc things of computer"/>
+
+<meta name="author" content="Scheme J"/>
+
+<!--end mete-->
+<!--begin keywords-->
+<meta name="keywords" content="Android,adeb,blockchain,cluster,composer,fabric,geth,hyperledge,hyperledger,linux,proxmox,start,test"/>
+<!--end keywords-->
+<!--begin rss-->
+
+<link rel="alternate" href="/atom.xml" title="Blog of Scheme" type="application/atom+xml">
+
+<!--end rss-->
+<!--begin favicon-->
+
+<link rel="icon" href="/favicon.ico">
+
+<!--end favicon-->
+<!--begin style-->
+
+<!-- stylesheets list from config.yml -->
+
+<link rel="stylesheet" href="/css/hannah.css">
+
+
+<!--end style-->
+<meta name="generator" content="Hexo 4.2.1"></head>
+<!--end head-->
+<!--begin body-->
+
+<body class="container-fluid">
+
+    <!--begin menu-->
+    <div class="hannah-menu">
+    <i class="fh fh-ravelry fa-2x btn fixed-menu animated bounce" id="btn_menu" aria-hidden="true"></i>
+    <div class="menu-outer container-fluid hide animated" id="div_menu">
+        <div class="row" style="margin-bottom: 5px;">
+            
+            <div class="col-md-offset-2 col-md-3 col-xs-4 text-center left-social">
+                
+                <a target="_blank" href="https://github.com/marryton007" title="GitHub"><i class="fh fh-github"></i></a>
+                
+                <style>
+                    .left-social {
+                        height: 132px;
+                        line-height: 132px;
+                        font-size: 66px;
+                    }
+
+                    .left-social * {
+                        color: #f1ce8e;
+                    }
+
+                    @media (max-width: 767px) {
+                        .left-social {
+                            line-height: 132px;
+                            font-size: 33px;
+                        }
+                    }
+                </style>
+            </div>
+            <!--begin handImg-->
+            <div class="col-md-2 col-xs-4 text-center">
+                
+                <img src="/img/logo.png" alt="Head Image" class="img-circle">
+                
+            </div>
+            <!--end handImg-->
+            <div class="col-md-3 col-xs-4 text-center right-social">
+                
+                <style>
+                    .right-social {
+                        height: 132px;
+                        line-height: 132px;
+                        font-size: 66px;
+                    }
+
+                    @media (max-width: 767px) {
+                        .right-social {
+                            line-height: 132px;
+                            font-size: 33px;
+                        }
+                    }
+
+                    .right-social * {
+                        color: #f1ce8e;
+                    }
+                </style>
+            </div>
+        </div>
+        <div class="row">
+            <div class="menu-content col-md-8 col-md-push-2 col-xs-12 ">
+                <dl class="menu-content-item">
+                    <dt class="menu-content-title">
+                        <i class="fh fh-bars" aria-hidden="true"></i> Menu
+                    </dt>
+                    <dd class="menu-content-content">
+                        
+                        <div class="col-md-4 col-xs-6 col-sm-4 text-center animated tada">
+                            <a href="/" class="btn btn-block">
+                                
+                                <i class="fh fh-ravelry"></i>
+                                Home
+                            </a>
+                        </div>
+                        
+                        <div class="col-md-4 col-xs-6 col-sm-4 text-center animated tada">
+                            <a href="/categories" class="btn btn-block">
+                                
+                                <i class="fh fh-cubes"></i>
+                                Category
+                            </a>
+                        </div>
+                        
+                        <div class="col-md-4 col-xs-6 col-sm-4 text-center animated tada">
+                            <a href="/tags" class="btn btn-block">
+                                
+                                <i class="fh fh-tags"></i>
+                                Tag
+                            </a>
+                        </div>
+                        
+                        <div class="col-md-4 col-xs-6 col-sm-4 text-center animated tada">
+                            <a href="/archives" class="btn btn-block">
+                                
+                                <i class="fh fh-archive"></i>
+                                Archives
+                            </a>
+                        </div>
+                        
+                        <div class="col-md-4 col-xs-6 col-sm-4 text-center animated tada">
+                            <a href="/about" class="btn btn-block">
+                                
+                                <i class="fh fh-about"></i>
+                                About
+                            </a>
+                        </div>
+                        
+                        <div class="col-md-4 col-xs-6 col-sm-4 text-center animated tada">
+                            <a href="/doc" class="btn btn-block">
+                                
+                                <i class="fh fh-document"></i>
+                                Doc
+                            </a>
+                        </div>
+                        
+                        <div class="col-md-4 col-xs-6 col-sm-4 text-center animated tada">
+                            <a href="/plug" class="btn btn-block">
+                                
+                                <i class="fh fh-plug"></i>
+                                Plug
+                            </a>
+                        </div>
+                        
+                        <div class="col-md-4 col-xs-6 col-sm-4 text-center animated tada">
+                            <a href="/sitemap" class="btn btn-block">
+                                
+                                <i class="fh fh-sitemap"></i>
+                                SiteMap
+                            </a>
+                        </div>
+                        
+                        <div class="col-md-4 col-xs-6 col-sm-4 text-center animated tada">
+                            <a href="/atom.xml" class="btn btn-block">
+                                <i class="fh fh-rss" aria-hidden="true"></i> RSS
+                            </a>
+                        </div>
+                    </dd>
+                </dl>
+            </div>
+        </div>
+        <div class="row">
+            <div class="menu-content col-md-8 col-md-offset-2 col-xs-12 ">
+                <dl class="col-md-6 col-xs-6 menu-content-item">
+                    <dt class="menu-content-title">
+                        <i class="fh fh-cubes" aria-hidden="true"></i> Category
+                    </dt>
+                    <dd class="menu-content-content animated zoomIn">
+                        <ul class="menu-cate-list"><li class="menu-cate-list-item"><a class="menu-cate-list-link" href="/categories/blockchain/"><i class="fh fh-cube" aria-hidden="true"></i> blockchain</a><span class="menu-cate-list-count">7</span></li><li class="menu-cate-list-item"><a class="menu-cate-list-link" href="/categories/cluster/"><i class="fh fh-cube" aria-hidden="true"></i> cluster</a><span class="menu-cate-list-count">1</span></li><li class="menu-cate-list-item"><a class="menu-cate-list-link" href="/categories/code/"><i class="fh fh-cube" aria-hidden="true"></i> code</a><span class="menu-cate-list-count">1</span></li><li class="menu-cate-list-item"><a class="menu-cate-list-link" href="/categories/embedded/"><i class="fh fh-cube" aria-hidden="true"></i> embedded</a><span class="menu-cate-list-count">1</span></li><li class="menu-cate-list-item"><a class="menu-cate-list-link" href="/categories/web%E5%89%8D%E7%AB%AF/"><i class="fh fh-cube" aria-hidden="true"></i> web前端</a><span class="menu-cate-list-count">1</span></li></ul>
+                    </dd>
+                </dl>
+                <dl class="col-md-6 col-xs-6 menu-content-item">
+                    <dt class="menu-content-title">
+                        <i class="fh fh-tag" aria-hidden="true"></i> Tags
+                    </dt>
+                    <dd class="menu-content-content animated zoomIn">
+                        <ul class="menu-tag-list" itemprop="keywords"><li class="menu-tag-list-item"><a class="menu-tag-list-link" href="/tags/Android/" rel="tag"><i class="fh fh-tag" aria-hidden="true"></i> Android</a><span class="menu-tag-list-count">1</span></li><li class="menu-tag-list-item"><a class="menu-tag-list-link" href="/tags/adeb/" rel="tag"><i class="fh fh-tag" aria-hidden="true"></i> adeb</a><span class="menu-tag-list-count">1</span></li><li class="menu-tag-list-item"><a class="menu-tag-list-link" href="/tags/blockchain/" rel="tag"><i class="fh fh-tag" aria-hidden="true"></i> blockchain</a><span class="menu-tag-list-count">9</span></li><li class="menu-tag-list-item"><a class="menu-tag-list-link" href="/tags/cluster/" rel="tag"><i class="fh fh-tag" aria-hidden="true"></i> cluster</a><span class="menu-tag-list-count">1</span></li><li class="menu-tag-list-item"><a class="menu-tag-list-link" href="/tags/composer/" rel="tag"><i class="fh fh-tag" aria-hidden="true"></i> composer</a><span class="menu-tag-list-count">3</span></li><li class="menu-tag-list-item"><a class="menu-tag-list-link" href="/tags/fabric/" rel="tag"><i class="fh fh-tag" aria-hidden="true"></i> fabric</a><span class="menu-tag-list-count">2</span></li><li class="menu-tag-list-item"><a class="menu-tag-list-link" href="/tags/geth/" rel="tag"><i class="fh fh-tag" aria-hidden="true"></i> geth</a><span class="menu-tag-list-count">1</span></li><li class="menu-tag-list-item"><a class="menu-tag-list-link" href="/tags/hyperledge/" rel="tag"><i class="fh fh-tag" aria-hidden="true"></i> hyperledge</a><span class="menu-tag-list-count">1</span></li><li class="menu-tag-list-item"><a class="menu-tag-list-link" href="/tags/hyperledger/" rel="tag"><i class="fh fh-tag" aria-hidden="true"></i> hyperledger</a><span class="menu-tag-list-count">5</span></li><li class="menu-tag-list-item"><a class="menu-tag-list-link" href="/tags/linux/" rel="tag"><i class="fh fh-tag" aria-hidden="true"></i> linux</a><span class="menu-tag-list-count">1</span></li><li class="menu-tag-list-item"><a class="menu-tag-list-link" href="/tags/proxmox/" rel="tag"><i class="fh fh-tag" aria-hidden="true"></i> proxmox</a><span class="menu-tag-list-count">1</span></li><li class="menu-tag-list-item"><a class="menu-tag-list-link" href="/tags/start/" rel="tag"><i class="fh fh-tag" aria-hidden="true"></i> start</a><span class="menu-tag-list-count">1</span></li><li class="menu-tag-list-item"><a class="menu-tag-list-link" href="/tags/test/" rel="tag"><i class="fh fh-tag" aria-hidden="true"></i> test</a><span class="menu-tag-list-count">1</span></li></ul>
+                    </dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>
+    <!--end menu-->
+
+    <div class="row hannah-body">
+        <div class="col-md-8 col-md-push-2 col-xs-12">
+            <!--begin breadcrumb-->
+            <div class="bread-crumb">
+    <ul class="bread-crumb-menu animated rubberBand">
+        <li><a href="/"><i class="fh fh-ravelry" aria-hidden="true"></i> Home</a></li>
+        
+        <li><a href="/categories/embedded/"><i class="fh fh-cube" aria-hidden="true"></i> embedded</a>
+        </li>
+        
+        <li>
+            
+            <i class="fh fh-newspaper-o" aria-hidden="true"></i>
+            
+            Android环境中bcc/bpftrace环境搭建
+        </li>
+        
+    </ul>
+    <div class="bread-crumb-search">
+        <div class="search">
+    <i class="fh fh-search icon-search"></i>
+    <input placeholder="Search ..." onkeyup="searchFunc(this,event,'/search.xml')"
+           class="input-search animated fadeInRight"/>
+    <div class="search-result animated fadeInRight">
+        <a class="animated tada col-lg-12 search-result-item result-link" href="/2022/04/29/embedded/adeb/">Android环境中bcc/bpftrace环境搭建</a><a class="animated tada col-lg-12 search-result-item result-link" href="/2020/06/08/test/">test</a><a class="animated tada col-lg-12 search-result-item result-link" href="/2018/12/08/fabric/peer-process/">Hyperledge fabric peer 流程分析</a><a class="animated tada col-lg-12 search-result-item result-link" href="/2018/11/08/proxmox/proxmox-setup/">proxmox 集群搭建</a><a class="animated tada col-lg-12 search-result-item result-link" href="/2018/04/22/blockchain/composer-k8s-fabric-deploy/">使用composer+k8s部署hyperledger fabric 1.1.0</a><a class="animated tada col-lg-12 search-result-item result-link" href="/2018/04/13/blockchain/geth-json-rpc/">以太坊节点geth json rpc使用指南</a><a class="animated tada col-lg-12 search-result-item result-link" href="/2017/09/28/blockchain/kafka-cluster/">搭建Kafka集群</a><a class="animated tada col-lg-12 search-result-item result-link" href="/2017/09/04/blockchain/hyperledger-composer-learn/">hyperledger composer 实战</a><a class="animated tada col-lg-12 search-result-item result-link" href="/2017/08/24/blockchain/fabric-transaction-flow/">hyperledger fabric交易流程</a><a class="animated tada col-lg-12 search-result-item result-link" href="/2017/08/23/blockchain/first-fabric-application/">基于hyperledger fabric网络的第一个应用</a><a class="animated tada col-lg-12 search-result-item result-link" href="/2017/08/22/blockchain/build-first-fabric-network/">使用hyperledger fabric构建你的第一个区块链网络</a><a class="animated tada col-lg-12 search-result-item result-link" href="/2017/08/18/blockchain/blockchain-describe/">白话区块链</a>
+    </div>
+</div>
+    </div>
+</div>
+            <!--end breadcrumb-->
+            <!--begin body-->
+            <article class="post animated rollIn">
+    <h1 class="post-title">Android环境中bcc/bpftrace环境搭建</h1>
+    <div class="post-subtitle">
+        
+        <time datetime="2022-04-29T03:54:00.000Z" class="item">
+            <i class="fh fh-calendar" aria-hidden="true"></i>&nbsp;&nbsp;2022-04-29
+        </time>
+        
+        
+        <span class="item">
+      <i class="fh fh-cubes" aria-hidden="true"></i>&nbsp;
+            
+            <a class="label label-primary tags" href="/categories/embedded/">
+           <i class="fh fh-cube" aria-hidden="true"></i>&nbsp;embedded
+        </a>
+            
+        </span>
+        
+        
+        <span class="item">
+        <i class="fh fh-tags" aria-hidden="true"></i>&nbsp;
+            
+            <a class="label label-info tags" href="/tags/Android/">
+            <i class="fh fh-tag" aria-hidden="true"></i>&nbsp;Android
+            </a>
+            
+            <a class="label label-info tags" href="/tags/adeb/">
+            <i class="fh fh-tag" aria-hidden="true"></i>&nbsp;adeb
+            </a>
+            
+            <a class="label label-info tags" href="/tags/linux/">
+            <i class="fh fh-tag" aria-hidden="true"></i>&nbsp;linux
+            </a>
+            
+        </span>
+        
+    </div>
+    
+    <h2 id="1-背景"><a href="#1-背景" class="headerlink" title="1. 背景"></a>1. 背景</h2><p>最近想研究一下Android中的性能分析，特别是关于使用<a href="https://github.com/iovisor/bpftrace" target="_blank" rel="noopener">bpftrace</a>,<a href="https://github.com/iovisor/bcc" target="_blank" rel="noopener">bcc</a>等工具对Linux内核进行动态跟踪的方法，因为Android本身工具并不丰富，网上大部分文章都是推荐使用<a href="https://github.com/marryton007/adeb.git" target="_blank" rel="noopener">adeb</a>这个工具，本篇文章就是关于如何搭建<a href="https://github.com/marryton007/adeb.git" target="_blank" rel="noopener">adeb</a>环境。</p>
+<h2 id="2-环境"><a href="#2-环境" class="headerlink" title="2. 环境"></a>2. 环境</h2><p>Ubuntu18.04 + RK3568开发板 Android11</p>
+<h2 id="3-原理"><a href="#3-原理" class="headerlink" title="3. 原理"></a>3. 原理</h2><p>简单来讲，adeb使用qemu-debootstrap工具生成了一个文件系统，并将这个文件系统通过adb push到Android开发板上，最后chroot到这个文件系统中运行shell。</p>
+<h2 id="4-使用"><a href="#4-使用" class="headerlink" title="4. 使用"></a>4. 使用</h2><h3 id="4-1-快速使用"><a href="#4-1-快速使用" class="headerlink" title="4.1 快速使用"></a>4.1 快速使用</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">// 下载预先制作好的文件系统</span><br><span class="line">cd ~/download</span><br><span class="line">curl -O https://github.com/joelagnel/adeb/releases/download/v0.99h/androdeb-fs.tgz.zip</span><br><span class="line">unzip androdeb-fs.tgz.zip</span><br><span class="line"></span><br><span class="line">// 下载adeb</span><br><span class="line">cd ~/git</span><br><span class="line">git clone  https://github.com/marryton007/adeb.git</span><br><span class="line">cd adeb</span><br><span class="line">sudo ln -s $(pwd)/adeb /usr/bin/adeb</span><br><span class="line">// 准备adeb环境</span><br><span class="line">adeb prepare --archive ~/download/androdeb-fs.tgz</span><br><span class="line">// 登录进入开发板，这里需要adb能访问开发板</span><br><span class="line">adeb shell</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-2-自制文件系统"><a href="#4-2-自制文件系统" class="headerlink" title="4.2 自制文件系统"></a>4.2 自制文件系统</h3><p>也许前面的文件系统不能完全满足你的要求，你可以修改adeb源码，添加自己的软件包，并制作自己的文件系统</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">// 制作文件系统，并打包成androdeb-fs.tgz</span><br><span class="line">adeb prepare --full --buildtar</span><br><span class="line">cp androdeb-fs* ~/download</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-3-通过NFS加载"><a href="#4-3-通过NFS加载" class="headerlink" title="4.3 通过NFS加载"></a>4.3 通过NFS加载</h3><p>即便你生成了androdeb-fs.tgz,但每次执行下面的指令都要花费很长的时间，因为它会上传压缩文件，并解压，花费的时间与文件系统大小有关，另外，如果开发板存储空间不够的话，也会有问题。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adeb prepare --archive ~/download/androdeb-fs.tgz</span><br></pre></td></tr></table></figure>
+
+<p>生命有限，不要将时间浪费在无谓的重复上，解决办法：使用NFS加载文件系统</p>
+<h3 id="4-4-准备NFS服务器"><a href="#4-4-准备NFS服务器" class="headerlink" title="4.4 准备NFS服务器"></a>4.4 准备NFS服务器</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install nfs-kernel-server</span><br><span class="line">sudo mkdir /opt/androdeb</span><br><span class="line">echo "/opt/androdeb  *(rw,sync,no_subtree_check,no_root_squash,insecure)" |sudo tee /etc/exports</span><br><span class="line">sudo systemctl restart nfs-server</span><br><span class="line">sudo exportfs -rv</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-5-填充文件系统内容"><a href="#4-5-填充文件系统内容" class="headerlink" title="4.5 填充文件系统内容"></a>4.5 填充文件系统内容</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo cp ~/git/adeb/addons/* /opt/androdeb</span><br><span class="line">sudo tar xf ~/download/androdeb-fs.tgz -C /opt/androdeb</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-5-Android开发板准备"><a href="#4-5-Android开发板准备" class="headerlink" title="4.5 Android开发板准备"></a>4.5 Android开发板准备</h3><p>Android系统要加载NFS文件系统，首先要内核支持NFS，请确保以下Kernel选项是选中的。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">CONFIG_NETWORK_FILESYSTEMS=y</span><br><span class="line">CONFIG_NFS_FS=y</span><br><span class="line">CONFIG_NFS_V2=y</span><br><span class="line">CONFIG_NFS_V3=y</span><br><span class="line">CONFIG_NFS_COMMON=y</span><br><span class="line">CONFIG_SUNRPC=y</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-6-加载NFS文件系统"><a href="#4-6-加载NFS文件系统" class="headerlink" title="4.6 加载NFS文件系统"></a>4.6 加载NFS文件系统</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">adb root &amp;&amp; adb remount &amp;&amp; adb tcpip 5555</span><br><span class="line">adb shell</span><br><span class="line">// 如果不关闭 selinux，mount 时会报：failed: I/O error</span><br><span class="line">setenforce 0</span><br><span class="line">mkdir /data/androdeb</span><br><span class="line">// 请将nfsserver用真实IP地址替换</span><br><span class="line">busybox mount -t nfs -o nolock  nfsserver:/opt/androdeb  /data/androdeb</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-7-通过NFS文件系统运行bcc，bpftrace"><a href="#4-7-通过NFS文件系统运行bcc，bpftrace" class="headerlink" title="4.7 通过NFS文件系统运行bcc，bpftrace"></a>4.7 通过NFS文件系统运行bcc，bpftrace</h3><p>通过NFS加载文件系统后，即可以切换到NFS文件系统</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">adb shell</span><br><span class="line">cd /data/androdeb</span><br><span class="line">source run.common</span><br><span class="line">do_mounts</span><br><span class="line">// chroot到NFS文件系统</span><br><span class="line">./run</span><br><span class="line">opensnoop-bpfcc</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;built-in&gt;:1:10: fatal error: './include/linux/kconfig.h' file not found</span><br><span class="line"><span class="meta">#</span><span class="bash">include <span class="string">"./include/linux/kconfig.h"</span></span></span><br><span class="line">         ^~~~~~~~~~~~~~~~~~~~~~~~~~~</span><br><span class="line">1 error generated.</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File "/usr/sbin/opensnoop-bpfcc", line 181, in &lt;module&gt;</span><br><span class="line">    b = BPF(text=bpf_text)</span><br><span class="line">  File "/usr/lib/python2.7/dist-packages/bcc/__init__.py", line 320, in __init__</span><br><span class="line">    raise Exception("Failed to compile BPF text")</span><br><span class="line">Exception: Failed to compile BPF text</span><br></pre></td></tr></table></figure>
+
+<p>这里是由于缺少Kernel头文件，我直接通过sshfs(你可以尝试NFS)将kernel源码影射到/lib/modules/<code>uname -r</code>/build目录下。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// 以下命令是在NFS文件系统中执行</span><br><span class="line">mkdir -p /lib/modules/`uname -r`/build</span><br><span class="line">// 由于build服务器只能使用密钥登录，这里将私钥将传到Android开发板上</span><br><span class="line">chmod 600 /data/local/id_rsa</span><br><span class="line">sshfs xxx@build-server:/opt/sdk/rock/rk-android11/kernel /lib/modules/`uname -r`/build -o IdentityFile=/data/local/id_rsa</span><br></pre></td></tr></table></figure>
+
+<p>如果上面的sshfs使用有问题，可以尝添加如下参数查看DEBUG信息</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sshfs xxx@build-server:/opt/sdk/rock/rk-android11/kernel /lib/modules/`uname -r`/build -o IdentityFile=/data/local/id_rsa -o debug -o sshfs_debug</span><br></pre></td></tr></table></figure>
+
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>整个过程看起来还是比较复杂的，既要编译内核，又用到了2种网络文件系统(NFS，SSHFS)，这也与Android系统自身有关系，毕竟与通用的Linux还是有不少差别，这里也是做个记录，怕忘记了。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://github.com/joelagnel/adeb" target="_blank" rel="noopener">原始的adeb仓库</a><br><a href="https://github.com/marryton007/adeb.git" target="_blank" rel="noopener">我的adeb仓库</a><br><a href="https://www.jianshu.com/p/b6f00754ead6" target="_blank" rel="noopener">nfs server 过防火墙</a><br><a href="https://blog.csdn.net/u010164190/article/details/100142755" target="_blank" rel="noopener">通过wifi使用nfs把ubuntu挂载到android</a></p>
+
+</article>
+<ol class="animated rollIn hannah-toc"><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-2"><a class="animated rollIn hannah-toc-link" href="#1-背景"><span class="animated rollIn hannah-toc-text">1. 背景</span></a></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-2"><a class="animated rollIn hannah-toc-link" href="#2-环境"><span class="animated rollIn hannah-toc-text">2. 环境</span></a></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-2"><a class="animated rollIn hannah-toc-link" href="#3-原理"><span class="animated rollIn hannah-toc-text">3. 原理</span></a></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-2"><a class="animated rollIn hannah-toc-link" href="#4-使用"><span class="animated rollIn hannah-toc-text">4. 使用</span></a><ol class="animated rollIn hannah-toc-child"><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-3"><a class="animated rollIn hannah-toc-link" href="#4-1-快速使用"><span class="animated rollIn hannah-toc-text">4.1 快速使用</span></a></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-3"><a class="animated rollIn hannah-toc-link" href="#4-2-自制文件系统"><span class="animated rollIn hannah-toc-text">4.2 自制文件系统</span></a></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-3"><a class="animated rollIn hannah-toc-link" href="#4-3-通过NFS加载"><span class="animated rollIn hannah-toc-text">4.3 通过NFS加载</span></a></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-3"><a class="animated rollIn hannah-toc-link" href="#4-4-准备NFS服务器"><span class="animated rollIn hannah-toc-text">4.4 准备NFS服务器</span></a></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-3"><a class="animated rollIn hannah-toc-link" href="#4-5-填充文件系统内容"><span class="animated rollIn hannah-toc-text">4.5 填充文件系统内容</span></a></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-3"><a class="animated rollIn hannah-toc-link" href="#4-5-Android开发板准备"><span class="animated rollIn hannah-toc-text">4.5 Android开发板准备</span></a></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-3"><a class="animated rollIn hannah-toc-link" href="#4-6-加载NFS文件系统"><span class="animated rollIn hannah-toc-text">4.6 加载NFS文件系统</span></a></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-3"><a class="animated rollIn hannah-toc-link" href="#4-7-通过NFS文件系统运行bcc，bpftrace"><span class="animated rollIn hannah-toc-text">4.7 通过NFS文件系统运行bcc，bpftrace</span></a></li></ol></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-2"><a class="animated rollIn hannah-toc-link" href="#总结"><span class="animated rollIn hannah-toc-text">总结</span></a></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-2"><a class="animated rollIn hannah-toc-link" href="#参考"><span class="animated rollIn hannah-toc-text">参考</span></a></li></ol>
+<div class="animated bounceInDown paginations">
+    <div class="col-md-8 col-md-push-2 col-xs-12">
+        <nav>
+            
+            <span
+                class="page-content col-md-8 col-md-offset-2 col-xs-offset-4 col-xs-4 text-center">
+                
+            </span>
+            
+            <a href="/2020/06/08/test/" class="next col-md-2 col-xs-4 text-right">Next &rarr;</a>
+            
+        </nav>
+        <div>
+            <div class="col-md-6 col-xs-6 text-left">
+                
+            </div>
+            <div class="col-md-6 col-xs-6 text-right">
+                
+                test
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+            <!--end body-->
+            <!--begin comments-->
+            
+<div class="comments">
+    
+
+    
+    
+</div>
+
+
+            <!--end comments-->
+        </div>
+    </div>
+
+    <!--begin footer-->
+    <footer id="footer" class="footer animated fadeInUp hide">
+    <p><i class="copy">&copy;</i> 2022 <a href="http://marryton007.github.io">Scheme J</a> All Right Reserved.</p>
+    <p>Powered by <a href="http://hexo.io" target="_blank" rel="external nofollow noopener">Hexo</a>. Theme by <a href="https://github.com/objectyan/hexo-theme-hannah" target="_blank" rel="external nofollow noopener">hannah</a></p>
+</footer>
+    <!--end footer-->
+
+    
+    <!-- scripts list from theme config.yml -->
+    
+    <script src="/js/hannah.js"></script>
+    
+    
+    <!--begin analytics-->
+    
+
+    <!--end analytics-->
+</body>
+<!--end body-->
+<!--begin canvas-nest-->
+<script>
+    var nesturl = "https://unpkg.com/canvas-nest.js/dist/canvas-nest.js";
+    var c = document.getElementsByTagName("body")[0] || document.body || document.documentElement;
+    var b = document.createElement("script");
+    b.setAttribute("type", "text/javascript");
+    b.setAttribute("src", nesturl);
+    b.setAttribute("color",
+        `${ Math.floor(Math.random()*256)},${ Math.floor(Math.random()*256)},${ Math.floor(Math.random()*256)}`);
+    b.setAttribute("opacity", Math.random());
+    b.setAttribute("count", parseInt((Math.random() * 500) || 99));
+    c.appendChild(b)
+</script>
+<!--end canvas-nest-->
+
+</html>

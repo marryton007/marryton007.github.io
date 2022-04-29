@@ -1,0 +1,466 @@
+
+
+<!DOCTYPE html>
+<html lang="zh">
+<!--begin head-->
+
+<head>
+    <meta charset="utf-8">
+<!--begin title-->
+
+<title>
+    
+    proxmox 集群搭建 |
+    
+    Blog of Scheme</title>
+<!--end title-->
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<!--begin mete-->
+
+<meta name="description" content="Blog of Scheme, misc things of computer"/>
+
+<meta name="author" content="Scheme J"/>
+
+<!--end mete-->
+<!--begin keywords-->
+<meta name="keywords" content="Android,adeb,blockchain,cluster,composer,fabric,geth,hyperledge,hyperledger,linux,proxmox,start,test"/>
+<!--end keywords-->
+<!--begin rss-->
+
+<link rel="alternate" href="/atom.xml" title="Blog of Scheme" type="application/atom+xml">
+
+<!--end rss-->
+<!--begin favicon-->
+
+<link rel="icon" href="/favicon.ico">
+
+<!--end favicon-->
+<!--begin style-->
+
+<!-- stylesheets list from config.yml -->
+
+<link rel="stylesheet" href="/css/hannah.css">
+
+
+<!--end style-->
+<meta name="generator" content="Hexo 4.2.1"></head>
+<!--end head-->
+<!--begin body-->
+
+<body class="container-fluid">
+
+    <!--begin menu-->
+    <div class="hannah-menu">
+    <i class="fh fh-ravelry fa-2x btn fixed-menu animated bounce" id="btn_menu" aria-hidden="true"></i>
+    <div class="menu-outer container-fluid hide animated" id="div_menu">
+        <div class="row" style="margin-bottom: 5px;">
+            
+            <div class="col-md-offset-2 col-md-3 col-xs-4 text-center left-social">
+                
+                <a target="_blank" href="https://github.com/marryton007" title="GitHub"><i class="fh fh-github"></i></a>
+                
+                <style>
+                    .left-social {
+                        height: 132px;
+                        line-height: 132px;
+                        font-size: 66px;
+                    }
+
+                    .left-social * {
+                        color: #f1ce8e;
+                    }
+
+                    @media (max-width: 767px) {
+                        .left-social {
+                            line-height: 132px;
+                            font-size: 33px;
+                        }
+                    }
+                </style>
+            </div>
+            <!--begin handImg-->
+            <div class="col-md-2 col-xs-4 text-center">
+                
+                <img src="/img/logo.png" alt="Head Image" class="img-circle">
+                
+            </div>
+            <!--end handImg-->
+            <div class="col-md-3 col-xs-4 text-center right-social">
+                
+                <style>
+                    .right-social {
+                        height: 132px;
+                        line-height: 132px;
+                        font-size: 66px;
+                    }
+
+                    @media (max-width: 767px) {
+                        .right-social {
+                            line-height: 132px;
+                            font-size: 33px;
+                        }
+                    }
+
+                    .right-social * {
+                        color: #f1ce8e;
+                    }
+                </style>
+            </div>
+        </div>
+        <div class="row">
+            <div class="menu-content col-md-8 col-md-push-2 col-xs-12 ">
+                <dl class="menu-content-item">
+                    <dt class="menu-content-title">
+                        <i class="fh fh-bars" aria-hidden="true"></i> Menu
+                    </dt>
+                    <dd class="menu-content-content">
+                        
+                        <div class="col-md-4 col-xs-6 col-sm-4 text-center animated tada">
+                            <a href="/" class="btn btn-block">
+                                
+                                <i class="fh fh-ravelry"></i>
+                                Home
+                            </a>
+                        </div>
+                        
+                        <div class="col-md-4 col-xs-6 col-sm-4 text-center animated tada">
+                            <a href="/categories" class="btn btn-block">
+                                
+                                <i class="fh fh-cubes"></i>
+                                Category
+                            </a>
+                        </div>
+                        
+                        <div class="col-md-4 col-xs-6 col-sm-4 text-center animated tada">
+                            <a href="/tags" class="btn btn-block">
+                                
+                                <i class="fh fh-tags"></i>
+                                Tag
+                            </a>
+                        </div>
+                        
+                        <div class="col-md-4 col-xs-6 col-sm-4 text-center animated tada">
+                            <a href="/archives" class="btn btn-block">
+                                
+                                <i class="fh fh-archive"></i>
+                                Archives
+                            </a>
+                        </div>
+                        
+                        <div class="col-md-4 col-xs-6 col-sm-4 text-center animated tada">
+                            <a href="/about" class="btn btn-block">
+                                
+                                <i class="fh fh-about"></i>
+                                About
+                            </a>
+                        </div>
+                        
+                        <div class="col-md-4 col-xs-6 col-sm-4 text-center animated tada">
+                            <a href="/doc" class="btn btn-block">
+                                
+                                <i class="fh fh-document"></i>
+                                Doc
+                            </a>
+                        </div>
+                        
+                        <div class="col-md-4 col-xs-6 col-sm-4 text-center animated tada">
+                            <a href="/plug" class="btn btn-block">
+                                
+                                <i class="fh fh-plug"></i>
+                                Plug
+                            </a>
+                        </div>
+                        
+                        <div class="col-md-4 col-xs-6 col-sm-4 text-center animated tada">
+                            <a href="/sitemap" class="btn btn-block">
+                                
+                                <i class="fh fh-sitemap"></i>
+                                SiteMap
+                            </a>
+                        </div>
+                        
+                        <div class="col-md-4 col-xs-6 col-sm-4 text-center animated tada">
+                            <a href="/atom.xml" class="btn btn-block">
+                                <i class="fh fh-rss" aria-hidden="true"></i> RSS
+                            </a>
+                        </div>
+                    </dd>
+                </dl>
+            </div>
+        </div>
+        <div class="row">
+            <div class="menu-content col-md-8 col-md-offset-2 col-xs-12 ">
+                <dl class="col-md-6 col-xs-6 menu-content-item">
+                    <dt class="menu-content-title">
+                        <i class="fh fh-cubes" aria-hidden="true"></i> Category
+                    </dt>
+                    <dd class="menu-content-content animated zoomIn">
+                        <ul class="menu-cate-list"><li class="menu-cate-list-item"><a class="menu-cate-list-link" href="/categories/blockchain/"><i class="fh fh-cube" aria-hidden="true"></i> blockchain</a><span class="menu-cate-list-count">7</span></li><li class="menu-cate-list-item"><a class="menu-cate-list-link" href="/categories/cluster/"><i class="fh fh-cube" aria-hidden="true"></i> cluster</a><span class="menu-cate-list-count">1</span></li><li class="menu-cate-list-item"><a class="menu-cate-list-link" href="/categories/code/"><i class="fh fh-cube" aria-hidden="true"></i> code</a><span class="menu-cate-list-count">1</span></li><li class="menu-cate-list-item"><a class="menu-cate-list-link" href="/categories/embedded/"><i class="fh fh-cube" aria-hidden="true"></i> embedded</a><span class="menu-cate-list-count">1</span></li><li class="menu-cate-list-item"><a class="menu-cate-list-link" href="/categories/web%E5%89%8D%E7%AB%AF/"><i class="fh fh-cube" aria-hidden="true"></i> web前端</a><span class="menu-cate-list-count">1</span></li></ul>
+                    </dd>
+                </dl>
+                <dl class="col-md-6 col-xs-6 menu-content-item">
+                    <dt class="menu-content-title">
+                        <i class="fh fh-tag" aria-hidden="true"></i> Tags
+                    </dt>
+                    <dd class="menu-content-content animated zoomIn">
+                        <ul class="menu-tag-list" itemprop="keywords"><li class="menu-tag-list-item"><a class="menu-tag-list-link" href="/tags/Android/" rel="tag"><i class="fh fh-tag" aria-hidden="true"></i> Android</a><span class="menu-tag-list-count">1</span></li><li class="menu-tag-list-item"><a class="menu-tag-list-link" href="/tags/adeb/" rel="tag"><i class="fh fh-tag" aria-hidden="true"></i> adeb</a><span class="menu-tag-list-count">1</span></li><li class="menu-tag-list-item"><a class="menu-tag-list-link" href="/tags/blockchain/" rel="tag"><i class="fh fh-tag" aria-hidden="true"></i> blockchain</a><span class="menu-tag-list-count">9</span></li><li class="menu-tag-list-item"><a class="menu-tag-list-link" href="/tags/cluster/" rel="tag"><i class="fh fh-tag" aria-hidden="true"></i> cluster</a><span class="menu-tag-list-count">1</span></li><li class="menu-tag-list-item"><a class="menu-tag-list-link" href="/tags/composer/" rel="tag"><i class="fh fh-tag" aria-hidden="true"></i> composer</a><span class="menu-tag-list-count">3</span></li><li class="menu-tag-list-item"><a class="menu-tag-list-link" href="/tags/fabric/" rel="tag"><i class="fh fh-tag" aria-hidden="true"></i> fabric</a><span class="menu-tag-list-count">2</span></li><li class="menu-tag-list-item"><a class="menu-tag-list-link" href="/tags/geth/" rel="tag"><i class="fh fh-tag" aria-hidden="true"></i> geth</a><span class="menu-tag-list-count">1</span></li><li class="menu-tag-list-item"><a class="menu-tag-list-link" href="/tags/hyperledge/" rel="tag"><i class="fh fh-tag" aria-hidden="true"></i> hyperledge</a><span class="menu-tag-list-count">1</span></li><li class="menu-tag-list-item"><a class="menu-tag-list-link" href="/tags/hyperledger/" rel="tag"><i class="fh fh-tag" aria-hidden="true"></i> hyperledger</a><span class="menu-tag-list-count">5</span></li><li class="menu-tag-list-item"><a class="menu-tag-list-link" href="/tags/linux/" rel="tag"><i class="fh fh-tag" aria-hidden="true"></i> linux</a><span class="menu-tag-list-count">1</span></li><li class="menu-tag-list-item"><a class="menu-tag-list-link" href="/tags/proxmox/" rel="tag"><i class="fh fh-tag" aria-hidden="true"></i> proxmox</a><span class="menu-tag-list-count">1</span></li><li class="menu-tag-list-item"><a class="menu-tag-list-link" href="/tags/start/" rel="tag"><i class="fh fh-tag" aria-hidden="true"></i> start</a><span class="menu-tag-list-count">1</span></li><li class="menu-tag-list-item"><a class="menu-tag-list-link" href="/tags/test/" rel="tag"><i class="fh fh-tag" aria-hidden="true"></i> test</a><span class="menu-tag-list-count">1</span></li></ul>
+                    </dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>
+    <!--end menu-->
+
+    <div class="row hannah-body">
+        <div class="col-md-8 col-md-push-2 col-xs-12">
+            <!--begin breadcrumb-->
+            <div class="bread-crumb">
+    <ul class="bread-crumb-menu animated rubberBand">
+        <li><a href="/"><i class="fh fh-ravelry" aria-hidden="true"></i> Home</a></li>
+        
+        <li><a href="/categories/cluster/"><i class="fh fh-cube" aria-hidden="true"></i> cluster</a>
+        </li>
+        
+        <li>
+            
+            <i class="fh fh-newspaper-o" aria-hidden="true"></i>
+            
+            proxmox 集群搭建
+        </li>
+        
+    </ul>
+    <div class="bread-crumb-search">
+        <div class="search">
+    <i class="fh fh-search icon-search"></i>
+    <input placeholder="Search ..." onkeyup="searchFunc(this,event,'/search.xml')"
+           class="input-search animated fadeInRight"/>
+    <div class="search-result animated fadeInRight">
+        <a class="animated tada col-lg-12 search-result-item result-link" href="/2022/04/29/embedded/adeb/">Android环境中bcc/bpftrace环境搭建</a><a class="animated tada col-lg-12 search-result-item result-link" href="/2020/06/08/test/">test</a><a class="animated tada col-lg-12 search-result-item result-link" href="/2018/12/08/fabric/peer-process/">Hyperledge fabric peer 流程分析</a><a class="animated tada col-lg-12 search-result-item result-link" href="/2018/11/08/proxmox/proxmox-setup/">proxmox 集群搭建</a><a class="animated tada col-lg-12 search-result-item result-link" href="/2018/04/22/blockchain/composer-k8s-fabric-deploy/">使用composer+k8s部署hyperledger fabric 1.1.0</a><a class="animated tada col-lg-12 search-result-item result-link" href="/2018/04/13/blockchain/geth-json-rpc/">以太坊节点geth json rpc使用指南</a><a class="animated tada col-lg-12 search-result-item result-link" href="/2017/09/28/blockchain/kafka-cluster/">搭建Kafka集群</a><a class="animated tada col-lg-12 search-result-item result-link" href="/2017/09/04/blockchain/hyperledger-composer-learn/">hyperledger composer 实战</a><a class="animated tada col-lg-12 search-result-item result-link" href="/2017/08/24/blockchain/fabric-transaction-flow/">hyperledger fabric交易流程</a><a class="animated tada col-lg-12 search-result-item result-link" href="/2017/08/23/blockchain/first-fabric-application/">基于hyperledger fabric网络的第一个应用</a><a class="animated tada col-lg-12 search-result-item result-link" href="/2017/08/22/blockchain/build-first-fabric-network/">使用hyperledger fabric构建你的第一个区块链网络</a><a class="animated tada col-lg-12 search-result-item result-link" href="/2017/08/18/blockchain/blockchain-describe/">白话区块链</a>
+    </div>
+</div>
+    </div>
+</div>
+            <!--end breadcrumb-->
+            <!--begin body-->
+            <article class="post animated rollIn">
+    <h1 class="post-title">proxmox 集群搭建</h1>
+    <div class="post-subtitle">
+        
+        <time datetime="2018-11-08T06:17:39.000Z" class="item">
+            <i class="fh fh-calendar" aria-hidden="true"></i>&nbsp;&nbsp;2018-11-08
+        </time>
+        
+        
+        <span class="item">
+      <i class="fh fh-cubes" aria-hidden="true"></i>&nbsp;
+            
+            <a class="label label-primary tags" href="/categories/cluster/">
+           <i class="fh fh-cube" aria-hidden="true"></i>&nbsp;cluster
+        </a>
+            
+        </span>
+        
+        
+        <span class="item">
+        <i class="fh fh-tags" aria-hidden="true"></i>&nbsp;
+            
+            <a class="label label-info tags" href="/tags/proxmox/">
+            <i class="fh fh-tag" aria-hidden="true"></i>&nbsp;proxmox
+            </a>
+            
+            <a class="label label-info tags" href="/tags/cluster/">
+            <i class="fh fh-tag" aria-hidden="true"></i>&nbsp;cluster
+            </a>
+            
+        </span>
+        
+    </div>
+    
+    <ol>
+<li><h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>刚到公司的时候，公司分了一台服务器，非常开心的装了 Centos7，跑了几个服务：</p>
+<ul>
+<li>GETH 私链</li>
+<li>BTC 测试网络</li>
+<li>BTC 私链</li>
+<li>EOS 测试网络</li>
+<li>…</li>
+</ul>
+<p>随着服务的增多，悲剧了，各个服务依赖的库、工具和服务不同，在一个环境里容易混乱，逐考虑使用虚拟机(VM)或是容器来进行管理。这里有 2 个选择：</p>
+<ul>
+<li>K8S(Kubernetes)</li>
+<li>Proxmox</li>
+</ul>
+<p>这里先不说 K8S，相对而言 K8S 比较复杂，短时间难以上手，以后有时间再弄。本人是无意中看到有人在玩 Proxmox 的，proxmox 本身概念比较简单，就一个管理 KVM 和 LXC 容器的平台，基于 Debian 制作，使用也简单，通过 WEB 界面就能完成绝大部分的工作；本人认为 Proxmox 的文档和论坛也比较友好，写得简单易懂。基于这些优点，Proxmox 上手非常快，我也才折腾了 2 周。</p>
+</li>
+<li><h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><p>这里准备 3 台机器，分别为：</p>
+<ul>
+<li>pve1 192.168.50.237</li>
+<li>pve2 192.168.50.236</li>
+<li>pve3 192.168.50.159<br>3 台机器, 128G SSD + 1T HDD, 16G 内存，分配好静态 IP。</li>
+</ul>
+</li>
+<li><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>下载<a href="https://www.proxmox.com/en/" target="_blank" rel="noopener">proxmox 官网</a>最新版 IOS 镜像(5.2), 使用<a href="https://etcher.io/" target="_blank" rel="noopener">烧录工具 etcher</a>写入 U 盘，使用 U 盘安装 Proxmox 系统， 统一安装在 SSD 上，安装过程不到 10 分钟，最重要的是设置好密码和网络信息。</p>
+</li>
+<li><h2 id="集群"><a href="#集群" class="headerlink" title="集群"></a>集群</h2><p>随便选 1 台机器做主控机，这里使用 pve1, 先进入 pve1 的终端命令控制台，直接登录或 SSH 都可。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pvecm create YOUR-CLUSTER-NAME</span><br></pre></td></tr></table></figure>
+
+<p>依次进入其他机器, 执行如下命令：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pvecm add 192.168.50.237(pve1 ip)</span><br></pre></td></tr></table></figure>
+
+<p>回到 pve1, 查看集群状态, 如果是如下状态，基本上可以了。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">root@pve1:~# pvecm status</span><br><span class="line">Quorum information</span><br><span class="line">------------------</span><br><span class="line">Date:             Fri Sep 21 20:05:24 2018</span><br><span class="line">Quorum provider:  corosync_votequorum</span><br><span class="line">Nodes:            3</span><br><span class="line">Node ID:          0x00000001</span><br><span class="line">Ring ID:          3/216</span><br><span class="line">Quorate:          Yes</span><br><span class="line"></span><br><span class="line">Votequorum information</span><br><span class="line">----------------------</span><br><span class="line">Expected votes:   3</span><br><span class="line">Highest expected: 3</span><br><span class="line">Total votes:      3</span><br><span class="line">Quorum:           2</span><br><span class="line">Flags:            Quorate</span><br><span class="line"></span><br><span class="line">Membership information</span><br><span class="line">----------------------</span><br><span class="line">    Nodeid      Votes Name</span><br><span class="line">0x00000003          1 192.168.50.159</span><br><span class="line">0x00000002          1 192.168.50.236</span><br><span class="line">0x00000001          1 192.168.50.237 (local)</span><br></pre></td></tr></table></figure>
+
+<p>打开 pve1 的 web 控制台，即可看到 3 台机器了。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://192.168.50.237:8006</span><br></pre></td></tr></table></figure>
+
+<p><img src="/img/pve/big-picture.png" alt="全局图"></p>
+</li>
+<li><h2 id="添加-NFS-存储和-Disk"><a href="#添加-NFS-存储和-Disk" class="headerlink" title="添加 NFS 存储和 Disk"></a>添加 NFS 存储和 Disk</h2><ul>
+<li>NFS<br>在 Web 控制台使用如下方式添加 NFS 存储，创建好的 NFS 是会在集群中共享的，即任何一个节点都可访问该 NFS 存储<br>Datacenter –&gt; Storage –&gt; NFS 在弹出的对话框中，添加 NFS 服务地址及导出的路径，最后确认即可。</li>
+</ul>
+<p><img src="/img/pve/nfs1.png" alt="nfs1"></p>
+<p><img src="/img/pve/nfs.png" alt="nfs"></p>
+<ul>
+<li>Disk<br>在 Web 控制台上添加 Disk<br>pve1 –&gt; Disks –&gt; LVM –&gt; Create: Volume Group 在弹出的对话框中，选择未使用的 HDD 硬盘(要求硬盘未分区，如果有，请先使用 Fdisk 工具抹除分区信息表)，添加即可。</li>
+</ul>
+<p><img src="/img/pve/disk.png" alt="disk1"></p>
+<p><img src="/img/pve/disk2.png" alt="disk2"></p>
+</li>
+<li><h2 id="上传-iso-镜像和下载-lxc-容器模板"><a href="#上传-iso-镜像和下载-lxc-容器模板" class="headerlink" title="上传 iso 镜像和下载 lxc 容器模板"></a>上传 iso 镜像和下载 lxc 容器模板</h2><p>在新建虚拟机(VM)和 Lxc 容器之前，需要先下载好相关的 ISO 镜像或是容器模板</p>
+<ul>
+<li><p>iso 镜像<br>在 Web 控制台上传 ISO 镜像<br>nfs(pve1) –&gt; Upload –&gt; select file(选择要上传的 ISO 镜像文件) –&gt; 点击 upload<br><img src="/img/pve/upload.png" alt="upload"><br><img src="/img/pve/upload2.png" alt="uplaod2"></p>
+</li>
+<li><p>lxc 模板<br>在 Web 控制台下载 lxc 模板<br>nfs(pve1) –&gt; Templates –&gt; 选择要下载的模板 –&gt; download<br><img src="/img/pve/lxc.png" alt="lxc"><br><img src="/img/pve/lxc2.png" alt="lxc2"></p>
+</li>
+</ul>
+</li>
+<li><h2 id="创建-VM-和-Lxc，启动，停止，克隆"><a href="#创建-VM-和-Lxc，启动，停止，克隆" class="headerlink" title="创建 VM 和 Lxc，启动，停止，克隆"></a>创建 VM 和 Lxc，启动，停止，克隆</h2><ul>
+<li>创建虚拟机(VM)<br>Web 控制台–&gt; Create VM(右上角) –&gt; 按向导操作，依次选定如下信息：</li>
+</ul>
+<ol>
+<li>general, 一般信息，主要设置 VM 名称，其他保持默认就好</li>
+<li>OS，操作系统，这里会用到前面上传 ISO 镜像</li>
+<li>Disk，设定磁盘大小</li>
+<li>CPU，设定 CPU 及核数量</li>
+<li>Memory，设定内存大小</li>
+<li>Network，设定网络类型，是静态 IP 叿 DHCP 等</li>
+<li>Finish, 创建完成<br><img src="/img/pve/create.png" alt="Create"><br><img src="/img/pve/create2.png" alt="Create"></li>
+</ol>
+<ul>
+<li>创建容器(lxc container)<br>创建容器过程与 VM 创建过程类似，有少许不同，Web 控制台–&gt; Create CT(右上角) –&gt; 按向导操作，依次选定如下信息：</li>
+</ul>
+<ol>
+<li>general，一般信息，须设定 hostname，root 密码等</li>
+<li>template， 选择前面下载好的模板</li>
+<li>Root Disk， 根磁盘，设定大小</li>
+<li>CPU</li>
+<li>Memory</li>
+<li>Network</li>
+<li>DNS</li>
+<li>Confirm &amp; finish<br><img src="/img/pve/lxc-create.png" alt="lxc_create"><br><img src="/img/pve/lxc-create2.png" alt="lxc_create2"></li>
+</ol>
+<ul>
+<li>启动，停止与克隆</li>
+</ul>
+<ol>
+<li>在左侧列表中选择 1 台 VM 或容器</li>
+<li>点击右上角相关按钮<br><img src="/img/pve/control.png" alt="lxc_create2"></li>
+</ol>
+</li>
+<li><h2 id="FAQ"><a href="#FAQ" class="headerlink" title="FAQ"></a>FAQ</h2><ul>
+<li><p>为什么不使用 Ceph 分布式文件系统<br>答： Ceph 看起来很美好，但在资源有限环境中不建议使用，我原来也把 ceph 折腾到 Proxmox 集群里了，但后面发现非常卡，甚至还不如本地磁盘的性能，所以就删除了 Ceph</p>
+</li>
+<li><p>如何快速克隆<br>答： Proxmox 自带的克隆比较慢，对虚拟机(VM)的克隆推荐使用<a href="https://clonezilla.org/downloads/download.php?branch=stable" target="_blank" rel="noopener">clonezilla</a>，其类似于 windows 上的 ghost(磁盘克隆工具)，使用办法是先下载<a href="https://clonezilla.org/downloads/download.php?branch=stable" target="_blank" rel="noopener">clonezilla</a>的镜像，替换 VM 的光驱镜像，设定 VM 从光驱引导即可。</p>
+</li>
+</ul>
+</li>
+<li><h2 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h2><ul>
+<li><a href="https://www.proxmox.com/en/" target="_blank" rel="noopener">proxmox 官网</a></li>
+<li><a href="https://etcher.io/" target="_blank" rel="noopener">烧录工具 etcher</a></li>
+<li><a href="https://clonezilla.org/downloads/download.php?branch=stable" target="_blank" rel="noopener">clonezilla</a></li>
+</ul>
+</li>
+</ol>
+
+</article>
+<ol class="animated rollIn hannah-toc"><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-2"><a class="animated rollIn hannah-toc-link" href="#背景"><span class="animated rollIn hannah-toc-text">背景</span></a></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-2"><a class="animated rollIn hannah-toc-link" href="#准备"><span class="animated rollIn hannah-toc-text">准备</span></a></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-2"><a class="animated rollIn hannah-toc-link" href="#安装"><span class="animated rollIn hannah-toc-text">安装</span></a></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-2"><a class="animated rollIn hannah-toc-link" href="#集群"><span class="animated rollIn hannah-toc-text">集群</span></a></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-2"><a class="animated rollIn hannah-toc-link" href="#添加-NFS-存储和-Disk"><span class="animated rollIn hannah-toc-text">添加 NFS 存储和 Disk</span></a></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-2"><a class="animated rollIn hannah-toc-link" href="#上传-iso-镜像和下载-lxc-容器模板"><span class="animated rollIn hannah-toc-text">上传 iso 镜像和下载 lxc 容器模板</span></a></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-2"><a class="animated rollIn hannah-toc-link" href="#创建-VM-和-Lxc，启动，停止，克隆"><span class="animated rollIn hannah-toc-text">创建 VM 和 Lxc，启动，停止，克隆</span></a></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-2"><a class="animated rollIn hannah-toc-link" href="#FAQ"><span class="animated rollIn hannah-toc-text">FAQ</span></a></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-2"><a class="animated rollIn hannah-toc-link" href="#资源"><span class="animated rollIn hannah-toc-text">资源</span></a></li></ol>
+<div class="animated bounceInDown paginations">
+    <div class="col-md-8 col-md-push-2 col-xs-12">
+        <nav>
+            
+            <a href="/2018/12/08/fabric/peer-process/" class="prev col-md-2 col-xs-4 text-left">&larr; Prev</a>
+            
+            <span
+                class="page-content col-md-8  col-xs-4 text-center">
+                
+            </span>
+            
+            <a href="/2018/04/22/blockchain/composer-k8s-fabric-deploy/" class="next col-md-2 col-xs-4 text-right">Next &rarr;</a>
+            
+        </nav>
+        <div>
+            <div class="col-md-6 col-xs-6 text-left">
+                
+                Hyperledge fabric peer 流程分析
+                
+            </div>
+            <div class="col-md-6 col-xs-6 text-right">
+                
+                使用composer+k8s部署hyperledger fabric 1.1.0
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+            <!--end body-->
+            <!--begin comments-->
+            
+<div class="comments">
+    
+
+    
+    
+</div>
+
+
+            <!--end comments-->
+        </div>
+    </div>
+
+    <!--begin footer-->
+    <footer id="footer" class="footer animated fadeInUp hide">
+    <p><i class="copy">&copy;</i> 2022 <a href="http://marryton007.github.io">Scheme J</a> All Right Reserved.</p>
+    <p>Powered by <a href="http://hexo.io" target="_blank" rel="external nofollow noopener">Hexo</a>. Theme by <a href="https://github.com/objectyan/hexo-theme-hannah" target="_blank" rel="external nofollow noopener">hannah</a></p>
+</footer>
+    <!--end footer-->
+
+    
+    <!-- scripts list from theme config.yml -->
+    
+    <script src="/js/hannah.js"></script>
+    
+    
+    <!--begin analytics-->
+    
+
+    <!--end analytics-->
+</body>
+<!--end body-->
+<!--begin canvas-nest-->
+<script>
+    var nesturl = "https://unpkg.com/canvas-nest.js/dist/canvas-nest.js";
+    var c = document.getElementsByTagName("body")[0] || document.body || document.documentElement;
+    var b = document.createElement("script");
+    b.setAttribute("type", "text/javascript");
+    b.setAttribute("src", nesturl);
+    b.setAttribute("color",
+        `${ Math.floor(Math.random()*256)},${ Math.floor(Math.random()*256)},${ Math.floor(Math.random()*256)}`);
+    b.setAttribute("opacity", Math.random());
+    b.setAttribute("count", parseInt((Math.random() * 500) || 99));
+    c.appendChild(b)
+</script>
+<!--end canvas-nest-->
+
+</html>

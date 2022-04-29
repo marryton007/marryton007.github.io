@@ -1,0 +1,416 @@
+
+
+<!DOCTYPE html>
+<html lang="zh">
+<!--begin head-->
+
+<head>
+    <meta charset="utf-8">
+<!--begin title-->
+
+<title>
+    
+    使用hyperledger fabric构建你的第一个区块链网络 |
+    
+    Blog of Scheme</title>
+<!--end title-->
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<!--begin mete-->
+
+<meta name="description" content="Blog of Scheme, misc things of computer"/>
+
+<meta name="author" content="Scheme J"/>
+
+<!--end mete-->
+<!--begin keywords-->
+<meta name="keywords" content="Android,adeb,blockchain,cluster,composer,fabric,geth,hyperledge,hyperledger,linux,proxmox,start,test"/>
+<!--end keywords-->
+<!--begin rss-->
+
+<link rel="alternate" href="/atom.xml" title="Blog of Scheme" type="application/atom+xml">
+
+<!--end rss-->
+<!--begin favicon-->
+
+<link rel="icon" href="/favicon.ico">
+
+<!--end favicon-->
+<!--begin style-->
+
+<!-- stylesheets list from config.yml -->
+
+<link rel="stylesheet" href="/css/hannah.css">
+
+
+<!--end style-->
+<meta name="generator" content="Hexo 4.2.1"></head>
+<!--end head-->
+<!--begin body-->
+
+<body class="container-fluid">
+
+    <!--begin menu-->
+    <div class="hannah-menu">
+    <i class="fh fh-ravelry fa-2x btn fixed-menu animated bounce" id="btn_menu" aria-hidden="true"></i>
+    <div class="menu-outer container-fluid hide animated" id="div_menu">
+        <div class="row" style="margin-bottom: 5px;">
+            
+            <div class="col-md-offset-2 col-md-3 col-xs-4 text-center left-social">
+                
+                <a target="_blank" href="https://github.com/marryton007" title="GitHub"><i class="fh fh-github"></i></a>
+                
+                <style>
+                    .left-social {
+                        height: 132px;
+                        line-height: 132px;
+                        font-size: 66px;
+                    }
+
+                    .left-social * {
+                        color: #f1ce8e;
+                    }
+
+                    @media (max-width: 767px) {
+                        .left-social {
+                            line-height: 132px;
+                            font-size: 33px;
+                        }
+                    }
+                </style>
+            </div>
+            <!--begin handImg-->
+            <div class="col-md-2 col-xs-4 text-center">
+                
+                <img src="/img/logo.png" alt="Head Image" class="img-circle">
+                
+            </div>
+            <!--end handImg-->
+            <div class="col-md-3 col-xs-4 text-center right-social">
+                
+                <style>
+                    .right-social {
+                        height: 132px;
+                        line-height: 132px;
+                        font-size: 66px;
+                    }
+
+                    @media (max-width: 767px) {
+                        .right-social {
+                            line-height: 132px;
+                            font-size: 33px;
+                        }
+                    }
+
+                    .right-social * {
+                        color: #f1ce8e;
+                    }
+                </style>
+            </div>
+        </div>
+        <div class="row">
+            <div class="menu-content col-md-8 col-md-push-2 col-xs-12 ">
+                <dl class="menu-content-item">
+                    <dt class="menu-content-title">
+                        <i class="fh fh-bars" aria-hidden="true"></i> Menu
+                    </dt>
+                    <dd class="menu-content-content">
+                        
+                        <div class="col-md-4 col-xs-6 col-sm-4 text-center animated tada">
+                            <a href="/" class="btn btn-block">
+                                
+                                <i class="fh fh-ravelry"></i>
+                                Home
+                            </a>
+                        </div>
+                        
+                        <div class="col-md-4 col-xs-6 col-sm-4 text-center animated tada">
+                            <a href="/categories" class="btn btn-block">
+                                
+                                <i class="fh fh-cubes"></i>
+                                Category
+                            </a>
+                        </div>
+                        
+                        <div class="col-md-4 col-xs-6 col-sm-4 text-center animated tada">
+                            <a href="/tags" class="btn btn-block">
+                                
+                                <i class="fh fh-tags"></i>
+                                Tag
+                            </a>
+                        </div>
+                        
+                        <div class="col-md-4 col-xs-6 col-sm-4 text-center animated tada">
+                            <a href="/archives" class="btn btn-block">
+                                
+                                <i class="fh fh-archive"></i>
+                                Archives
+                            </a>
+                        </div>
+                        
+                        <div class="col-md-4 col-xs-6 col-sm-4 text-center animated tada">
+                            <a href="/about" class="btn btn-block">
+                                
+                                <i class="fh fh-about"></i>
+                                About
+                            </a>
+                        </div>
+                        
+                        <div class="col-md-4 col-xs-6 col-sm-4 text-center animated tada">
+                            <a href="/doc" class="btn btn-block">
+                                
+                                <i class="fh fh-document"></i>
+                                Doc
+                            </a>
+                        </div>
+                        
+                        <div class="col-md-4 col-xs-6 col-sm-4 text-center animated tada">
+                            <a href="/plug" class="btn btn-block">
+                                
+                                <i class="fh fh-plug"></i>
+                                Plug
+                            </a>
+                        </div>
+                        
+                        <div class="col-md-4 col-xs-6 col-sm-4 text-center animated tada">
+                            <a href="/sitemap" class="btn btn-block">
+                                
+                                <i class="fh fh-sitemap"></i>
+                                SiteMap
+                            </a>
+                        </div>
+                        
+                        <div class="col-md-4 col-xs-6 col-sm-4 text-center animated tada">
+                            <a href="/atom.xml" class="btn btn-block">
+                                <i class="fh fh-rss" aria-hidden="true"></i> RSS
+                            </a>
+                        </div>
+                    </dd>
+                </dl>
+            </div>
+        </div>
+        <div class="row">
+            <div class="menu-content col-md-8 col-md-offset-2 col-xs-12 ">
+                <dl class="col-md-6 col-xs-6 menu-content-item">
+                    <dt class="menu-content-title">
+                        <i class="fh fh-cubes" aria-hidden="true"></i> Category
+                    </dt>
+                    <dd class="menu-content-content animated zoomIn">
+                        <ul class="menu-cate-list"><li class="menu-cate-list-item"><a class="menu-cate-list-link" href="/categories/blockchain/"><i class="fh fh-cube" aria-hidden="true"></i> blockchain</a><span class="menu-cate-list-count">7</span></li><li class="menu-cate-list-item"><a class="menu-cate-list-link" href="/categories/cluster/"><i class="fh fh-cube" aria-hidden="true"></i> cluster</a><span class="menu-cate-list-count">1</span></li><li class="menu-cate-list-item"><a class="menu-cate-list-link" href="/categories/code/"><i class="fh fh-cube" aria-hidden="true"></i> code</a><span class="menu-cate-list-count">1</span></li><li class="menu-cate-list-item"><a class="menu-cate-list-link" href="/categories/embedded/"><i class="fh fh-cube" aria-hidden="true"></i> embedded</a><span class="menu-cate-list-count">1</span></li><li class="menu-cate-list-item"><a class="menu-cate-list-link" href="/categories/web%E5%89%8D%E7%AB%AF/"><i class="fh fh-cube" aria-hidden="true"></i> web前端</a><span class="menu-cate-list-count">1</span></li></ul>
+                    </dd>
+                </dl>
+                <dl class="col-md-6 col-xs-6 menu-content-item">
+                    <dt class="menu-content-title">
+                        <i class="fh fh-tag" aria-hidden="true"></i> Tags
+                    </dt>
+                    <dd class="menu-content-content animated zoomIn">
+                        <ul class="menu-tag-list" itemprop="keywords"><li class="menu-tag-list-item"><a class="menu-tag-list-link" href="/tags/Android/" rel="tag"><i class="fh fh-tag" aria-hidden="true"></i> Android</a><span class="menu-tag-list-count">1</span></li><li class="menu-tag-list-item"><a class="menu-tag-list-link" href="/tags/adeb/" rel="tag"><i class="fh fh-tag" aria-hidden="true"></i> adeb</a><span class="menu-tag-list-count">1</span></li><li class="menu-tag-list-item"><a class="menu-tag-list-link" href="/tags/blockchain/" rel="tag"><i class="fh fh-tag" aria-hidden="true"></i> blockchain</a><span class="menu-tag-list-count">9</span></li><li class="menu-tag-list-item"><a class="menu-tag-list-link" href="/tags/cluster/" rel="tag"><i class="fh fh-tag" aria-hidden="true"></i> cluster</a><span class="menu-tag-list-count">1</span></li><li class="menu-tag-list-item"><a class="menu-tag-list-link" href="/tags/composer/" rel="tag"><i class="fh fh-tag" aria-hidden="true"></i> composer</a><span class="menu-tag-list-count">3</span></li><li class="menu-tag-list-item"><a class="menu-tag-list-link" href="/tags/fabric/" rel="tag"><i class="fh fh-tag" aria-hidden="true"></i> fabric</a><span class="menu-tag-list-count">2</span></li><li class="menu-tag-list-item"><a class="menu-tag-list-link" href="/tags/geth/" rel="tag"><i class="fh fh-tag" aria-hidden="true"></i> geth</a><span class="menu-tag-list-count">1</span></li><li class="menu-tag-list-item"><a class="menu-tag-list-link" href="/tags/hyperledge/" rel="tag"><i class="fh fh-tag" aria-hidden="true"></i> hyperledge</a><span class="menu-tag-list-count">1</span></li><li class="menu-tag-list-item"><a class="menu-tag-list-link" href="/tags/hyperledger/" rel="tag"><i class="fh fh-tag" aria-hidden="true"></i> hyperledger</a><span class="menu-tag-list-count">5</span></li><li class="menu-tag-list-item"><a class="menu-tag-list-link" href="/tags/linux/" rel="tag"><i class="fh fh-tag" aria-hidden="true"></i> linux</a><span class="menu-tag-list-count">1</span></li><li class="menu-tag-list-item"><a class="menu-tag-list-link" href="/tags/proxmox/" rel="tag"><i class="fh fh-tag" aria-hidden="true"></i> proxmox</a><span class="menu-tag-list-count">1</span></li><li class="menu-tag-list-item"><a class="menu-tag-list-link" href="/tags/start/" rel="tag"><i class="fh fh-tag" aria-hidden="true"></i> start</a><span class="menu-tag-list-count">1</span></li><li class="menu-tag-list-item"><a class="menu-tag-list-link" href="/tags/test/" rel="tag"><i class="fh fh-tag" aria-hidden="true"></i> test</a><span class="menu-tag-list-count">1</span></li></ul>
+                    </dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>
+    <!--end menu-->
+
+    <div class="row hannah-body">
+        <div class="col-md-8 col-md-push-2 col-xs-12">
+            <!--begin breadcrumb-->
+            <div class="bread-crumb">
+    <ul class="bread-crumb-menu animated rubberBand">
+        <li><a href="/"><i class="fh fh-ravelry" aria-hidden="true"></i> Home</a></li>
+        
+        <li>
+            
+            <i class="fh fh-newspaper-o" aria-hidden="true"></i>
+            
+            使用hyperledger fabric构建你的第一个区块链网络
+        </li>
+        
+    </ul>
+    <div class="bread-crumb-search">
+        <div class="search">
+    <i class="fh fh-search icon-search"></i>
+    <input placeholder="Search ..." onkeyup="searchFunc(this,event,'/search.xml')"
+           class="input-search animated fadeInRight"/>
+    <div class="search-result animated fadeInRight">
+        <a class="animated tada col-lg-12 search-result-item result-link" href="/2022/04/29/embedded/adeb/">Android环境中bcc/bpftrace环境搭建</a><a class="animated tada col-lg-12 search-result-item result-link" href="/2020/06/08/test/">test</a><a class="animated tada col-lg-12 search-result-item result-link" href="/2018/12/08/fabric/peer-process/">Hyperledge fabric peer 流程分析</a><a class="animated tada col-lg-12 search-result-item result-link" href="/2018/11/08/proxmox/proxmox-setup/">proxmox 集群搭建</a><a class="animated tada col-lg-12 search-result-item result-link" href="/2018/04/22/blockchain/composer-k8s-fabric-deploy/">使用composer+k8s部署hyperledger fabric 1.1.0</a><a class="animated tada col-lg-12 search-result-item result-link" href="/2018/04/13/blockchain/geth-json-rpc/">以太坊节点geth json rpc使用指南</a><a class="animated tada col-lg-12 search-result-item result-link" href="/2017/09/28/blockchain/kafka-cluster/">搭建Kafka集群</a><a class="animated tada col-lg-12 search-result-item result-link" href="/2017/09/04/blockchain/hyperledger-composer-learn/">hyperledger composer 实战</a><a class="animated tada col-lg-12 search-result-item result-link" href="/2017/08/24/blockchain/fabric-transaction-flow/">hyperledger fabric交易流程</a><a class="animated tada col-lg-12 search-result-item result-link" href="/2017/08/23/blockchain/first-fabric-application/">基于hyperledger fabric网络的第一个应用</a><a class="animated tada col-lg-12 search-result-item result-link" href="/2017/08/22/blockchain/build-first-fabric-network/">使用hyperledger fabric构建你的第一个区块链网络</a><a class="animated tada col-lg-12 search-result-item result-link" href="/2017/08/18/blockchain/blockchain-describe/">白话区块链</a>
+    </div>
+</div>
+    </div>
+</div>
+            <!--end breadcrumb-->
+            <!--begin body-->
+            <article class="post animated rollIn">
+    <h1 class="post-title">使用hyperledger fabric构建你的第一个区块链网络</h1>
+    <div class="post-subtitle">
+        
+        <time datetime="2017-08-22T06:17:39.000Z" class="item">
+            <i class="fh fh-calendar" aria-hidden="true"></i>&nbsp;&nbsp;2017-08-22
+        </time>
+        
+        
+        
+        <span class="item">
+        <i class="fh fh-tags" aria-hidden="true"></i>&nbsp;
+            
+            <a class="label label-info tags" href="/tags/blockchain/">
+            <i class="fh fh-tag" aria-hidden="true"></i>&nbsp;blockchain
+            </a>
+            
+        </span>
+        
+    </div>
+    
+    <p><a href="http://hyperledger-fabric.readthedocs.io/en/latest/build_network.html" target="_blank" rel="noopener">官方文档参考</a></p>
+<p>摘要：本文仅描述在单台 mac 机器上使用 docker 创建一个 fabric 区块链网络</p>
+<ol>
+<li><h4 id="安装依赖工具"><a href="#安装依赖工具" class="headerlink" title="安装依赖工具"></a>安装依赖工具</h4><ul>
+<li><a href="https://curl.haxx.se/download.html" target="_blank" rel="noopener">cURL</a></li>
+<li><a href="https://www.docker.com/products/overview" target="_blank" rel="noopener">docker</a> 17.03.1-ce 以上, 建议安装 docker for mac</li>
+<li>docker-compose</li>
+<li><a href="https://golang.org" target="_blank" rel="noopener">go</a> 1.7.x</li>
+<li><a href="https://nodejs.org/en/" target="_blank" rel="noopener">nodejs</a> 6.9.x</li>
+</ul>
+</li>
+<li><h4 id="下载-fabric-sample-项目"><a href="#下载-fabric-sample-项目" class="headerlink" title="下载 fabric sample 项目"></a>下载 fabric sample 项目</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mkdir  <span class="variable">$HOME</span>/work</span><br><span class="line"><span class="built_in">cd</span> <span class="variable">$HOME</span>/work</span><br><span class="line">git <span class="built_in">clone</span> https://github.com/hyperledger/fabric-samples.git</span><br><span class="line"><span class="built_in">cd</span> fabric-samples</span><br><span class="line">git checkout -b release</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>将源代码切换到 release 分支比较好，master 分支可能会有隐藏的 bug。</p>
+</blockquote>
+</li>
+<li><h4 id="下载平台相关的二进制文件和-docker-镜像文件"><a href="#下载平台相关的二进制文件和-docker-镜像文件" class="headerlink" title="下载平台相关的二进制文件和 docker 镜像文件"></a>下载平台相关的二进制文件和 docker 镜像文件</h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> <span class="variable">$HOME</span>/work</span><br><span class="line">curl -sSL https://goo.gl/eYdRbX -o fabric-samples.sh</span><br></pre></td></tr></table></figure>
+
+<p>脚本内容如下：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Copyright IBM Corp. All Rights Reserved.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># SPDX-License-Identifier: Apache-2.0</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">export</span> VERSION=1.0.1</span><br><span class="line"><span class="built_in">export</span> ARCH=$(<span class="built_in">echo</span> <span class="string">"<span class="variable">$(uname -s|tr '[:upper:]' '[:lower:]'|sed 's/mingw64_nt.*/windows/')</span>-<span class="variable">$(uname -m | sed 's/x86_64/amd64/g')</span>"</span> | awk <span class="string">'&#123;print tolower($0)&#125;'</span>)</span><br><span class="line"><span class="comment">#Set MARCH variable i.e ppc64le,s390x,x86_64,i386</span></span><br><span class="line">MARCH=`uname -m`</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">dockerFabricPull</span></span>() &#123;</span><br><span class="line">  <span class="built_in">local</span> FABRIC_TAG=<span class="variable">$1</span></span><br><span class="line">  <span class="keyword">for</span> IMAGES <span class="keyword">in</span> peer orderer couchdb ccenv javaenv kafka zookeeper tools; <span class="keyword">do</span></span><br><span class="line">      <span class="built_in">echo</span> <span class="string">"==&gt; FABRIC IMAGE: <span class="variable">$IMAGES</span>"</span></span><br><span class="line">      <span class="built_in">echo</span></span><br><span class="line">      docker pull hyperledger/fabric-<span class="variable">$IMAGES</span>:<span class="variable">$FABRIC_TAG</span></span><br><span class="line">      docker tag hyperledger/fabric-<span class="variable">$IMAGES</span>:<span class="variable">$FABRIC_TAG</span> hyperledger/fabric-<span class="variable">$IMAGES</span></span><br><span class="line">  <span class="keyword">done</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">dockerCaPull</span></span>() &#123;</span><br><span class="line">      <span class="built_in">local</span> CA_TAG=<span class="variable">$1</span></span><br><span class="line">      <span class="built_in">echo</span> <span class="string">"==&gt; FABRIC CA IMAGE"</span></span><br><span class="line">      <span class="built_in">echo</span></span><br><span class="line">      docker pull hyperledger/fabric-ca:<span class="variable">$CA_TAG</span></span><br><span class="line">      docker tag hyperledger/fabric-ca:<span class="variable">$CA_TAG</span> hyperledger/fabric-ca</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">: <span class="variable">$&#123;CA_TAG:="$MARCH-$VERSION"&#125;</span></span><br><span class="line">: <span class="variable">$&#123;FABRIC_TAG:="$MARCH-$VERSION"&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"===&gt; Downloading platform binaries"</span></span><br><span class="line">curl https://nexus.hyperledger.org/content/repositories/releases/org/hyperledger/fabric/hyperledger-fabric/<span class="variable">$&#123;ARCH&#125;</span>-<span class="variable">$&#123;VERSION&#125;</span>/hyperledger-fabric-<span class="variable">$&#123;ARCH&#125;</span>-<span class="variable">$&#123;VERSION&#125;</span>.tar.gz | tar xz</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"===&gt; Pulling fabric Images"</span></span><br><span class="line">dockerFabricPull <span class="variable">$&#123;FABRIC_TAG&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"===&gt; Pulling fabric ca Image"</span></span><br><span class="line">dockerCaPull <span class="variable">$&#123;CA_TAG&#125;</span></span><br><span class="line"><span class="built_in">echo</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"===&gt; List out hyperledger docker images"</span></span><br><span class="line">docker images | grep hyperledger*</span><br></pre></td></tr></table></figure>
+
+<p>该脚本会下载一些平台相关的二进制文件，如 cryptogen、configtxgen 等，下载的二进制文件会放在 bin 目录下，注意将该目录加入系统环境变量 PATH 中，如下设置：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> <span class="variable">$HOME</span>/work</span><br><span class="line">sh ./fabric-samples.sh</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"export PATH="</span><span class="variable">$HOME</span>/work/bin:<span class="variable">$PATH</span><span class="string">""</span> &gt;&gt; <span class="variable">$HOME</span>/.profile</span><br></pre></td></tr></table></figure>
+
+<p>同时，脚本还会下载相关的 docker 镜像，如 hyperledger/fabric-peer, hyperledger/fabric-orderer 等，下载镜像过程可能会比较慢，建议使用<a href="https://www.daocloud.io/mirror#accelerator-doc" target="_blank" rel="noopener">daocloud</a>或是阿里云加速</p>
+</li>
+<li><h3 id="获取区块链建链脚本帮助文档"><a href="#获取区块链建链脚本帮助文档" class="headerlink" title="获取区块链建链脚本帮助文档"></a>获取区块链建链脚本帮助文档</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> <span class="variable">$HOME</span>/work/fabric-samples/first-network</span><br><span class="line">./byfn.sh -h</span><br><span class="line">Usage:</span><br><span class="line">  byfn.sh -m up|down|restart|generate [-c &lt;channel name&gt;] [-t &lt;timeout&gt;]</span><br><span class="line">  byfn.sh -h|--<span class="built_in">help</span> (<span class="built_in">print</span> this message)</span><br><span class="line">    -m &lt;mode&gt; - one of <span class="string">'up'</span>, <span class="string">'down'</span>, <span class="string">'restart'</span> or <span class="string">'generate'</span></span><br><span class="line">      - <span class="string">'up'</span> - bring up the network with docker-compose up</span><br><span class="line">      - <span class="string">'down'</span> - clear the network with docker-compose down</span><br><span class="line">      - <span class="string">'restart'</span> - restart the network</span><br><span class="line">      - <span class="string">'generate'</span> - generate required certificates and genesis block</span><br><span class="line">    -c &lt;channel name&gt; - config name to use (defaults to <span class="string">"mychannel"</span>)</span><br><span class="line">    -t &lt;timeout&gt; - CLI timeout duration <span class="keyword">in</span> microseconds (defaults to 10000)</span><br><span class="line"></span><br><span class="line">Typically, one would first generate the required certificates and</span><br><span class="line">genesis block, <span class="keyword">then</span> bring up the network. e.g.:</span><br><span class="line"></span><br><span class="line">  byfn.sh -m generate -c &lt;channelname&gt;</span><br><span class="line">  byfn.sh -m up -c &lt;channelname&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><h3 id="生成相关证书-启动和停止区块链网络"><a href="#生成相关证书-启动和停止区块链网络" class="headerlink" title="生成相关证书,启动和停止区块链网络"></a>生成相关证书,启动和停止区块链网络</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">./byfn.sh -m generate</span><br><span class="line">./byfn.sh -m up</span><br><span class="line">./byfn.sh -m down</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>generate 的作用:<ul>
+<li>调用 cryptogen 生成证书树，在区块链的运作过程中，每个节点都要使用证书对自己所生成的内容进行签名，其他节点都也需要证书对数据进行验证。</li>
+<li>调用 configtxgen 生成‘上帝区块’和‘通道初始信息’</li>
+</ul>
+</li>
+<li>up，使用 docker-compose 启动区块链网络</li>
+<li>down,停止区块链网络</li>
+</ul>
+</li>
+</ol>
+<p>6) ### 相关名词解释</p>
+<ul>
+<li>peer，节点，区块链组网基本单元，主要作用：<ul>
+<li>负责对客户端发起的交易进行背书</li>
+<li>记账</li>
+</ul>
+</li>
+<li>anchor peer，锚(主)节点，用来跨组织进行通信的节点</li>
+<li>orderer, 排序节点，通过对客户端发起的交易进行排序，其结果将发布到 peer 进行记账，orderer 节点是区块链共识算法的主要执行者，orderer 节点依据共识算法的不同，可以是 1 台机器，也可以是多台机器组成共识网络，fabric 支持集成 kafka、zookeeper 等</li>
+<li>channel, 通道，更好的说法是‘子账本’，在一个区块链网络中，允许存在多个子账本，子账本之间互相隔离，一个通道里可以包含多个 peer 和 order。</li>
+<li>ca，fabric 的认证授权管理，支持基于数据库和<a href="https://segmentfault.com/a/1190000002607140" target="_blank" rel="noopener">LDAP</a>认证的方法</li>
+<li>genesis block, 上帝区块，链中第 1 个区块</li>
+<li><a href="http://hyperledger-fabric.readthedocs.io/en/latest/msp.html" target="_blank" rel="noopener">msp</a>， 成员服务提供商</li>
+</ul>
+<p>7) ### crypto-config.yaml 文件说明</p>
+   <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">-</span> <span class="attr">Name:</span> <span class="string">Orderer</span></span><br><span class="line">  <span class="attr">Domain:</span> <span class="string">example.com</span></span><br><span class="line">  <span class="attr">Specs:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">Hostname:</span> <span class="string">orderer</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">Name:</span> <span class="string">Org1</span></span><br><span class="line">  <span class="attr">Domain:</span> <span class="string">org1.example.com</span></span><br><span class="line">  <span class="attr">Template:</span></span><br><span class="line">    <span class="attr">Count:</span> <span class="number">2</span></span><br><span class="line">  <span class="attr">Users:</span></span><br><span class="line">    <span class="attr">Count:</span> <span class="number">1</span></span><br><span class="line"><span class="bullet">-</span> <span class="attr">Name:</span> <span class="string">Org2</span></span><br><span class="line">  <span class="attr">Domain:</span> <span class="string">org2.example.com</span></span><br><span class="line">  <span class="attr">Template:</span></span><br><span class="line">    <span class="attr">Count:</span> <span class="number">2</span></span><br><span class="line">  <span class="attr">Users:</span></span><br><span class="line">    <span class="attr">Count:</span> <span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<p>   crypto-config.yaml 文件是 cryptogen 的配置文件，crypto-config.yaml 文件定义了整个 fabric 网络的组织结构。有如下关键因素。</p>
+   <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">*</span> <span class="string">OrdererOrgs</span>  <span class="string">定义orderer组织结构</span></span><br><span class="line">    <span class="string">*</span>  <span class="string">Name</span> <span class="string">组织名称</span></span><br><span class="line">    <span class="string">*</span>  <span class="string">Domain</span> <span class="string">组织域名</span></span><br><span class="line">    <span class="string">*</span>  <span class="string">Specs</span>  <span class="string">显示定义组织</span></span><br><span class="line">        <span class="string">*</span>  <span class="string">Hostname</span> <span class="string">主机名称，与组织域名一起构成orderer全名</span></span><br><span class="line">        <span class="string">*</span>  <span class="string">CommonName</span> <span class="string">自定义主机名称，覆盖默认名称</span></span><br><span class="line"></span><br><span class="line"><span class="string">*</span> <span class="string">PeerOrgs</span>  <span class="string">定义peer组织结构</span></span><br><span class="line">    <span class="string">*</span>  <span class="string">Name</span> <span class="string">组织名称</span></span><br><span class="line">    <span class="string">*</span>  <span class="string">Domain</span> <span class="string">组织域名</span></span><br><span class="line">    <span class="string">*</span>  <span class="string">Specs</span>  <span class="string">同OrdererOrgs</span></span><br><span class="line">    <span class="string">*</span>  <span class="string">Template</span>  <span class="string">以模板形式定义组织</span></span><br><span class="line">        <span class="string">*</span>  <span class="string">Count</span> <span class="string">定义在该组织下peer节点数量，每个peer节点名称形如：peer[0-count-1].Domain</span></span><br><span class="line">    <span class="string">*</span> <span class="string">Users</span>  <span class="string">定义用户</span></span><br><span class="line">        <span class="string">*</span>  <span class="string">Count</span> <span class="string">定义除了Admin之外用户数，每个用户名称形如User[1-count]@Domain</span></span><br></pre></td></tr></table></figure>
+
+<p>8) ### configtx.yaml</p>
+   <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Copyright IBM Corp. All Rights Reserved.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># SPDX-License-Identifier: Apache-2.0</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"></span><br><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="comment">################################################################################</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#   Profile</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#   - Different configuration profiles may be encoded here to be specified</span></span><br><span class="line"><span class="comment">#   as parameters to the configtxgen tool</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">################################################################################</span></span><br><span class="line"><span class="attr">Profiles:</span></span><br><span class="line"></span><br><span class="line">    <span class="attr">TwoOrgsOrdererGenesis:</span></span><br><span class="line">        <span class="attr">Orderer:</span></span><br><span class="line">            <span class="string">&lt;&lt;:</span> <span class="meta">*OrdererDefaults</span></span><br><span class="line">            <span class="attr">Organizations:</span></span><br><span class="line">                <span class="bullet">-</span> <span class="meta">*OrdererOrg</span></span><br><span class="line">        <span class="attr">Consortiums:</span></span><br><span class="line">            <span class="attr">SampleConsortium:</span></span><br><span class="line">                <span class="attr">Organizations:</span></span><br><span class="line">                    <span class="bullet">-</span> <span class="meta">*Org1</span></span><br><span class="line">                    <span class="bullet">-</span> <span class="meta">*Org2</span></span><br><span class="line">    <span class="attr">TwoOrgsChannel:</span></span><br><span class="line">        <span class="attr">Consortium:</span> <span class="string">SampleConsortium</span></span><br><span class="line">        <span class="attr">Application:</span></span><br><span class="line">            <span class="string">&lt;&lt;:</span> <span class="meta">*ApplicationDefaults</span></span><br><span class="line">            <span class="attr">Organizations:</span></span><br><span class="line">                <span class="bullet">-</span> <span class="meta">*Org1</span></span><br><span class="line">                <span class="bullet">-</span> <span class="meta">*Org2</span></span><br><span class="line"></span><br><span class="line"><span class="comment">################################################################################</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#   Section: Organizations</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#   - This section defines the different organizational identities which will</span></span><br><span class="line"><span class="comment">#   be referenced later in the configuration.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">################################################################################</span></span><br><span class="line"><span class="attr">Organizations:</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># SampleOrg defines an MSP using the sampleconfig.  It should never be used</span></span><br><span class="line">    <span class="comment"># in production but may be used as a template for other definitions</span></span><br><span class="line">    <span class="bullet">-</span> <span class="meta">&amp;OrdererOrg</span></span><br><span class="line">        <span class="comment"># DefaultOrg defines the organization which is used in the sampleconfig</span></span><br><span class="line">        <span class="comment"># of the fabric.git development environment</span></span><br><span class="line">        <span class="attr">Name:</span> <span class="string">OrdererOrg</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># ID to load the MSP definition as</span></span><br><span class="line">        <span class="attr">ID:</span> <span class="string">OrdererMSP</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># MSPDir is the filesystem path which contains the MSP configuration</span></span><br><span class="line">        <span class="attr">MSPDir:</span> <span class="string">crypto-config/ordererOrganizations/example.com/msp</span></span><br><span class="line"></span><br><span class="line">    <span class="bullet">-</span> <span class="meta">&amp;Org1</span></span><br><span class="line">        <span class="comment"># DefaultOrg defines the organization which is used in the sampleconfig</span></span><br><span class="line">        <span class="comment"># of the fabric.git development environment</span></span><br><span class="line">        <span class="attr">Name:</span> <span class="string">Org1MSP</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># ID to load the MSP definition as</span></span><br><span class="line">        <span class="attr">ID:</span> <span class="string">Org1MSP</span></span><br><span class="line"></span><br><span class="line">        <span class="attr">MSPDir:</span> <span class="string">crypto-config/peerOrganizations/org1.example.com/msp</span></span><br><span class="line"></span><br><span class="line">        <span class="attr">AnchorPeers:</span></span><br><span class="line">            <span class="comment"># AnchorPeers defines the location of peers which can be used</span></span><br><span class="line">            <span class="comment"># for cross org gossip communication.  Note, this value is only</span></span><br><span class="line">            <span class="comment"># encoded in the genesis block in the Application section context</span></span><br><span class="line">            <span class="bullet">-</span> <span class="attr">Host:</span> <span class="string">peer0.org1.example.com</span></span><br><span class="line">              <span class="attr">Port:</span> <span class="number">7051</span></span><br><span class="line"></span><br><span class="line">    <span class="bullet">-</span> <span class="meta">&amp;Org2</span></span><br><span class="line">        <span class="comment"># DefaultOrg defines the organization which is used in the sampleconfig</span></span><br><span class="line">        <span class="comment"># of the fabric.git development environment</span></span><br><span class="line">        <span class="attr">Name:</span> <span class="string">Org2MSP</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># ID to load the MSP definition as</span></span><br><span class="line">        <span class="attr">ID:</span> <span class="string">Org2MSP</span></span><br><span class="line"></span><br><span class="line">        <span class="attr">MSPDir:</span> <span class="string">crypto-config/peerOrganizations/org2.example.com/msp</span></span><br><span class="line"></span><br><span class="line">        <span class="attr">AnchorPeers:</span></span><br><span class="line">            <span class="comment"># AnchorPeers defines the location of peers which can be used</span></span><br><span class="line">            <span class="comment"># for cross org gossip communication.  Note, this value is only</span></span><br><span class="line">            <span class="comment"># encoded in the genesis block in the Application section context</span></span><br><span class="line">            <span class="bullet">-</span> <span class="attr">Host:</span> <span class="string">peer0.org2.example.com</span></span><br><span class="line">              <span class="attr">Port:</span> <span class="number">7051</span></span><br><span class="line"></span><br><span class="line"><span class="comment">################################################################################</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#   SECTION: Orderer</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#   - This section defines the values to encode into a config transaction or</span></span><br><span class="line"><span class="comment">#   genesis block for orderer related parameters</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">################################################################################</span></span><br><span class="line"><span class="attr">Orderer:</span> <span class="meta">&amp;OrdererDefaults</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># Orderer Type: The orderer implementation to start</span></span><br><span class="line">    <span class="comment"># Available types are "solo" and "kafka"</span></span><br><span class="line">    <span class="attr">OrdererType:</span> <span class="string">solo</span></span><br><span class="line"></span><br><span class="line">    <span class="attr">Addresses:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="string">orderer.example.com:7050</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># Batch Timeout: The amount of time to wait before creating a batch</span></span><br><span class="line">    <span class="attr">BatchTimeout:</span> <span class="string">2s</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># Batch Size: Controls the number of messages batched into a block</span></span><br><span class="line">    <span class="attr">BatchSize:</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># Max Message Count: The maximum number of messages to permit in a batch</span></span><br><span class="line">        <span class="attr">MaxMessageCount:</span> <span class="number">10</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># Absolute Max Bytes: The absolute maximum number of bytes allowed for</span></span><br><span class="line">        <span class="comment"># the serialized messages in a batch.</span></span><br><span class="line">        <span class="attr">AbsoluteMaxBytes:</span> <span class="number">99</span> <span class="string">MB</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># Preferred Max Bytes: The preferred maximum number of bytes allowed for</span></span><br><span class="line">        <span class="comment"># the serialized messages in a batch. A message larger than the preferred</span></span><br><span class="line">        <span class="comment"># max bytes will result in a batch larger than preferred max bytes.</span></span><br><span class="line">        <span class="attr">PreferredMaxBytes:</span> <span class="number">512</span> <span class="string">KB</span></span><br><span class="line"></span><br><span class="line">    <span class="attr">Kafka:</span></span><br><span class="line">        <span class="comment"># Brokers: A list of Kafka brokers to which the orderer connects</span></span><br><span class="line">        <span class="comment"># <span class="doctag">NOTE:</span> Use IP:port notation</span></span><br><span class="line">        <span class="attr">Brokers:</span></span><br><span class="line">            <span class="bullet">-</span> <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span><span class="string">:9092</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># Organizations is the list of orgs which are defined as participants on</span></span><br><span class="line">    <span class="comment"># the orderer side of the network</span></span><br><span class="line">    <span class="attr">Organizations:</span></span><br><span class="line"></span><br><span class="line"><span class="comment">################################################################################</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#   SECTION: Application</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#   - This section defines the values to encode into a config transaction or</span></span><br><span class="line"><span class="comment">#   genesis block for application related parameters</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">################################################################################</span></span><br><span class="line"><span class="attr">Application:</span> <span class="meta">&amp;ApplicationDefaults</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># Organizations is the list of orgs which are defined as participants on</span></span><br><span class="line">    <span class="comment"># the application side of the network</span></span><br><span class="line">    <span class="attr">Organizations:</span></span><br></pre></td></tr></table></figure>
+
+<p>   configtxgen 根据 configtx.yaml 的配置来生成‘上帝区块’和‘channel’信息，上例中定义了 2 个配置。</p>
+   <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">*</span> <span class="string">TwoOrgsOrdererGenesis</span> <span class="string">第1个配置名称，一般取比较有意义的名字，这里意思是包含2个组织的上帝区块配置说明</span></span><br><span class="line">    <span class="string">*</span> <span class="string">Orderer</span> <span class="string">排序(共识)选项</span></span><br><span class="line">        <span class="string">*</span> <span class="string">&lt;&lt;:</span> <span class="string">*OrdererDefaults</span> <span class="string">&lt;&lt;是yaml语法，表示引入OrdererDefaults的定义</span></span><br><span class="line">        <span class="string">*</span> <span class="string">Organizations</span> <span class="string">组织选项</span></span><br><span class="line">            <span class="string">*</span> <span class="string">OrdererOrg</span>  <span class="string">引入OrdererOrg定义</span></span><br><span class="line">    <span class="string">*</span> <span class="string">Consortiums</span> <span class="string">多组织联合信息</span></span><br><span class="line">        <span class="string">*</span> <span class="string">SampleConsortium</span> <span class="string">联合名称</span></span><br><span class="line">        <span class="string">*</span> <span class="string">Organizations</span> <span class="string">联合中的组织列表</span></span><br><span class="line"></span><br><span class="line"><span class="string">*</span> <span class="string">TwoOrgsChannel</span> <span class="string">第2个配置名称，包含2个组织的通道说明</span></span><br><span class="line">    <span class="string">*</span> <span class="string">Consortium</span> <span class="string">组织联合信息</span></span><br><span class="line">    <span class="string">*</span> <span class="string">Application</span></span><br><span class="line">        <span class="string">*</span> <span class="string">&lt;&lt;:</span> <span class="string">*ApplicationDefaults</span>  <span class="string">引入应用的定义</span></span><br><span class="line">        <span class="string">*</span> <span class="string">Organizations</span> <span class="string">应用的组织列表</span></span><br></pre></td></tr></table></figure>
+
+<p>9) ### 总结</p>
+<p>   hyperledger fabric 的工具比较多，概念也不少，理解起来有一定的门槛。个人认为先要理解一些基本概念，再参考<a href="http://hyperledger-fabric.readthedocs.io/en/latest" target="_blank" rel="noopener">官方文档</a>尝试搭建区块链网络，尝试写 1 个合约，尝试与现有系统集成。再深入理解 crypto-config.yaml 和 configtx.yaml 文件，当然，这需要一定的时间和坚持。</p>
+<p>10) ### 免责声明<br>    hyperledger fabric 的配置信息相对还是比较复杂的，且中文文档较少，以上内容只是个人理解，如有错误之处，万望指正。</p>
+
+</article>
+<ol class="animated rollIn hannah-toc"><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-4"><a class="animated rollIn hannah-toc-link" href="#安装依赖工具"><span class="animated rollIn hannah-toc-text">安装依赖工具</span></a></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-4"><a class="animated rollIn hannah-toc-link" href="#下载-fabric-sample-项目"><span class="animated rollIn hannah-toc-text">下载 fabric sample 项目</span></a></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-4"><a class="animated rollIn hannah-toc-link" href="#下载平台相关的二进制文件和-docker-镜像文件"><span class="animated rollIn hannah-toc-text">下载平台相关的二进制文件和 docker 镜像文件</span></a></li></ol></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-3"><a class="animated rollIn hannah-toc-link" href="#获取区块链建链脚本帮助文档"><span class="animated rollIn hannah-toc-text">获取区块链建链脚本帮助文档</span></a></li><li class="animated rollIn hannah-toc-item animated rollIn hannah-toc-level-3"><a class="animated rollIn hannah-toc-link" href="#生成相关证书-启动和停止区块链网络"><span class="animated rollIn hannah-toc-text">生成相关证书,启动和停止区块链网络</span></a>
+<div class="animated bounceInDown paginations">
+    <div class="col-md-8 col-md-push-2 col-xs-12">
+        <nav>
+            
+            <a href="/2017/08/23/blockchain/first-fabric-application/" class="prev col-md-2 col-xs-4 text-left">&larr; Prev</a>
+            
+            <span
+                class="page-content col-md-8  col-xs-4 text-center">
+                
+            </span>
+            
+            <a href="/2017/08/18/blockchain/blockchain-describe/" class="next col-md-2 col-xs-4 text-right">Next &rarr;</a>
+            
+        </nav>
+        <div>
+            <div class="col-md-6 col-xs-6 text-left">
+                
+                基于hyperledger fabric网络的第一个应用
+                
+            </div>
+            <div class="col-md-6 col-xs-6 text-right">
+                
+                白话区块链
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+            <!--end body-->
+            <!--begin comments-->
+            
+<div class="comments">
+    
+
+    
+    
+</div>
+
+
+            <!--end comments-->
+        </div>
+    </div>
+
+    <!--begin footer-->
+    <footer id="footer" class="footer animated fadeInUp hide">
+    <p><i class="copy">&copy;</i> 2022 <a href="http://marryton007.github.io">Scheme J</a> All Right Reserved.</p>
+    <p>Powered by <a href="http://hexo.io" target="_blank" rel="external nofollow noopener">Hexo</a>. Theme by <a href="https://github.com/objectyan/hexo-theme-hannah" target="_blank" rel="external nofollow noopener">hannah</a></p>
+</footer>
+    <!--end footer-->
+
+    
+    <!-- scripts list from theme config.yml -->
+    
+    <script src="/js/hannah.js"></script>
+    
+    
+    <!--begin analytics-->
+    
+
+    <!--end analytics-->
+</body>
+<!--end body-->
+<!--begin canvas-nest-->
+<script>
+    var nesturl = "https://unpkg.com/canvas-nest.js/dist/canvas-nest.js";
+    var c = document.getElementsByTagName("body")[0] || document.body || document.documentElement;
+    var b = document.createElement("script");
+    b.setAttribute("type", "text/javascript");
+    b.setAttribute("src", nesturl);
+    b.setAttribute("color",
+        `${ Math.floor(Math.random()*256)},${ Math.floor(Math.random()*256)},${ Math.floor(Math.random()*256)}`);
+    b.setAttribute("opacity", Math.random());
+    b.setAttribute("count", parseInt((Math.random() * 500) || 99));
+    c.appendChild(b)
+</script>
+<!--end canvas-nest-->
+
+</html>
